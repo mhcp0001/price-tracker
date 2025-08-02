@@ -107,7 +107,7 @@ export const handlers = [
 
   // Supabase: price submission
   http.post(`${SUPABASE_URL}/rest/v1/prices`, async ({ request }) => {
-    const body = await request.json()
+    const body = await request.json() as Record<string, unknown>
     
     return HttpResponse.json({
       id: 'new-price-id',
@@ -119,7 +119,7 @@ export const handlers = [
 
   // Supabase: anonymous users
   http.post(`${SUPABASE_URL}/rest/v1/anonymous_users`, async ({ request }) => {
-    const body = await request.json()
+    const body = await request.json() as Record<string, unknown>
     
     return HttpResponse.json({
       ...body,

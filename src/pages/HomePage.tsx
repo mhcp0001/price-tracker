@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { MapPin, Search, Plus } from 'lucide-react'
 import { StoreMap } from '@/components/maps/StoreMap'
 import { PriceSubmissionForm } from '@/components/forms/PriceSubmissionForm'
@@ -34,14 +34,7 @@ const HomePage = () => {
     }
   }, [])
 
-  // 位置情報が取得できたら近隣店舗を取得
-  useEffect(() => {
-    if (location && !loading) {
-      fetchNearbyStores()
-    }
-  }, [location])
-
-  const fetchNearbyStores = async () => {
+  const fetchNearbyStores = useCallback(async () => {
     if (!location) return
 
     setLoading(true)
@@ -58,7 +51,14 @@ const HomePage = () => {
     } finally {
       setLoading(false)
     }
-  }
+  }, [location])
+
+  // 位置情報が取得できたら近隣店舗を取得
+  useEffect(() => {
+    if (location && !loading) {
+      fetchNearbyStores()
+    }
+  }, [location, loading, fetchNearbyStores])
 
   return (
     <div className="min-h-screen bg-gray-50">

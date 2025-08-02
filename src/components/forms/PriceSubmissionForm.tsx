@@ -103,11 +103,12 @@ export const PriceSubmissionForm = ({ store, onClose, onSuccess }: PriceSubmissi
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* 商品名入力 */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="product-name" className="block text-sm font-medium text-gray-700 mb-1">
               商品名
             </label>
             <div className="relative">
               <input
+                id="product-name"
                 type="text"
                 value={productName}
                 onChange={(e) => {
@@ -154,10 +155,11 @@ export const PriceSubmissionForm = ({ store, onClose, onSuccess }: PriceSubmissi
 
           {/* 価格入力 */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-1">
               価格（円）
             </label>
             <input
+              id="price"
               type="number"
               value={price}
               onChange={(e) => setPrice(e.target.value)}

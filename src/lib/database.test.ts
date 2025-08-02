@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from 'vitest'
 import { DatabaseService } from './database'
 import { supabase } from './supabase'
+import type { PostgrestSingleResponse, PostgrestResponse } from '@supabase/supabase-js'
 
 // Supabaseクライアントをモック
 vi.mock('./supabase', () => ({
@@ -27,7 +28,7 @@ describe('DatabaseService', () => {
       vi.mocked(supabase.rpc).mockResolvedValue({
         data: mockStores,
         error: null,
-      } as any)
+      } as PostgrestSingleResponse<typeof mockStores>)
 
       const result = await DatabaseService.getNearbyStores(35.6812, 139.7671, 2000)
 
@@ -43,7 +44,7 @@ describe('DatabaseService', () => {
       vi.mocked(supabase.rpc).mockResolvedValue({
         data: null,
         error: new Error('Database error'),
-      } as any)
+      } as PostgrestSingleResponse<null>)
 
       await expect(
         DatabaseService.getNearbyStores(35.6812, 139.7671, 2000)
@@ -66,7 +67,7 @@ describe('DatabaseService', () => {
       vi.mocked(supabase.rpc).mockResolvedValue({
         data: mockProducts,
         error: null,
-      } as any)
+      } as PostgrestSingleResponse<typeof mockProducts>)
 
       const result = await DatabaseService.searchProducts('牛乳')
 
@@ -95,7 +96,7 @@ describe('DatabaseService', () => {
         single: vi.fn().mockResolvedValue({ data: mockPrice, error: null }),
       }
 
-      vi.mocked(supabase.from).mockReturnValue(fromMock as any)
+      vi.mocked(supabase.from).mockReturnValue(fromMock as ReturnType<typeof supabase.from>)
 
       const result = await DatabaseService.submitPrice({
         productId: 'prod1',

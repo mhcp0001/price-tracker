@@ -26,7 +26,6 @@ export const StoreMap = ({ stores, center, onStoreSelect }: StoreMapProps) => {
       style: 'mapbox://styles/mapbox/streets-v12',
       center: [center.lng, center.lat],
       zoom: 14,
-      language: 'ja',
     })
 
     // 現在位置マーカー

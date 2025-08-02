@@ -1,6 +1,8 @@
 import { FullConfig } from '@playwright/test'
+import { execSync } from 'child_process'
 
-async function globalTeardown(config: FullConfig) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+async function globalTeardown(_config: FullConfig) {
   console.log('🧹 Cleaning up E2E test environment...')
   
   // テストデータのクリーンアップ
@@ -10,7 +12,6 @@ async function globalTeardown(config: FullConfig) {
       
       // テストデータの削除処理
       // 実際の実装では scripts/cleanup-test-db.js を呼び出す
-      const { execSync } = require('child_process')
       execSync('npm run test:cleanup', { stdio: 'inherit' })
       
       console.log('✅ Test database cleanup completed')

@@ -4,13 +4,14 @@ import userEvent from '@testing-library/user-event'
 import { BrowserRouter } from 'react-router-dom'
 import HomePage from './HomePage'
 import { DatabaseService } from '@/lib/database'
+import type { Store } from '@/lib/types'
 
 // モック
 vi.mock('@/lib/database')
 vi.mock('@/components/maps/StoreMap', () => ({
-  StoreMap: ({ stores, onStoreSelect }: any) => (
+  StoreMap: ({ stores, onStoreSelect }: { stores: Store[], onStoreSelect?: (store: Store) => void }) => (
     <div data-testid="store-map">
-      {stores.map((store: any) => (
+      {stores.map((store) => (
         <div key={store.id} onClick={() => onStoreSelect?.(store)}>
           {store.name}
         </div>
@@ -19,7 +20,7 @@ vi.mock('@/components/maps/StoreMap', () => ({
   ),
 }))
 vi.mock('@/components/forms/PriceSubmissionForm', () => ({
-  PriceSubmissionForm: ({ store, onClose }: any) => (
+  PriceSubmissionForm: ({ store, onClose }: { store: Store, onClose: () => void }) => (
     <div data-testid="price-form">
       Price form for {store.name}
       <button onClick={onClose}>Close</button>
