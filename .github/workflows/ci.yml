@@ -2,9 +2,10 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main, develop, feature/mvp-implementation]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   # 基本的な静的解析とリント
@@ -220,7 +221,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: [lint-and-typecheck, unit-tests, e2e-tests, build-test]
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    environment: production
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
