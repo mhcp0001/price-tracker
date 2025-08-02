@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 議論・質問 (Discussions)
+    url: https://github.com/mhcp0001/price-tracker/discussions
+    about: 機能提案、質問、一般的な議論はDiscussionsをご利用ください
+  - name: 📖 プロジェクトドキュメント
+    url: https://github.com/mhcp0001/price-tracker/blob/main/README.md
+    about: プロジェクトの概要、技術仕様、開発ガイドラインを確認できます
+  - name: 🌿 ブランチ戦略ガイド
+    url: https://github.com/mhcp0001/price-tracker/blob/main/docs/BRANCHING_STRATEGY.md
+    about: Git Flowワークフローと開発プロセスの詳細ガイド
