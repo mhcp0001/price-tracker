@@ -1,198 +1,218 @@
-# Claude Code Settings Best Practices
+# Price Tracker PWA
 
-A repository collecting best practices for Claude Code settings and customization. We will continue to update and improve this repository to make it even better.
+スーパーマーケット価格追跡プログレッシブWebアプリ（PWA）の開発プロジェクトです。ユーザーの周辺エリアのスーパーで最もお得な価格を教えてくれるスマートフォン向けWebアプリを開発しています。
 
-**Note:** Some settings in this repository are specifically configured for Japanese users. Please use LLM to translate and adapt them appropriately to your environment.
+## 🎯 プロジェクト概要
 
-The configuration files in this repository are designed to be placed under `~/.claude/` directory. By placing these configuration files in the appropriate locations, you can customize Claude Code's behavior and build an efficient development environment.
+このアプリは日本の消費者が日常の買い物でより良い価格を見つけることを支援します。コミュニティ主導の価格情報共有により、リアルタイムで正確な価格比較を提供します。
 
-## Project Structure
+### 主要機能
+
+1. **🛒 買い物リスト最適化**: 総合計金額が最安になる単一店舗を提案
+2. **📊 リアルタイム価格比較**: 現在いる店舗での価格vs周辺店舗の比較  
+3. **🤝 コミュニティ価格共有**: ユーザー投稿による最新価格情報の共有
+4. **📱 PWA対応**: オフライン機能とホーム画面インストール
+
+## 📁 プロジェクト構造
 
 ```
-claude-code-settings/
-├── CLAUDE.md          # Global user guidelines for ~/.claude/ placement
-├── settings.json      # Claude Code configuration file
-├── commands/          # Custom command definitions
-│   ├── code-review.md    # Execute code review with detailed analysis
-│   ├── d-search.md       # Deep codebase analysis using gemini-cli
-│   ├── design.md         # Technical design phase execution
-│   ├── marp.md          # Marp presentation creation command
-│   ├── requirements.md   # Requirements definition phase execution
-│   ├── search.md        # Google web search using gemini-cli
-│   ├── spec.md          # Complete specification-driven development workflow
-│   ├── tasks.md         # Task breakdown phase execution
-│   └── textlint.md      # File proofreading and correction with textlint
-└── symlinks/         # External tools config files as symbolic links
-    ├── settings.json      # Claude Code settings with MCP configurations
-    └── config/
-        └── ccmanager/
-            └── config.json    # ccmanager: Claude Code project & git worktree manager
+price-tracker/
+├── .claude/                 # Claude Code設定ファイル
+│   ├── CLAUDE.md           # プロジェクト固有ガイドライン
+│   ├── settings.json       # 共通設定（チーム共有）
+│   └── settings.local.json # 個人設定（ローカル専用）
+├── .tmp/                   # 仕様書（開発フェーズ成果物）
+│   ├── requirements.md     # 要件定義書（221行）
+│   ├── design.md          # 技術設計書（1,925行）
+│   └── tasks.md           # 実装タスクリスト（609行）
+├── src/                    # アプリケーションソースコード（実装時作成）
+│   ├── frontend/          # React PWA フロントエンド
+│   ├── backend/           # Node.js API バックエンド
+│   └── shared/            # 共通型定義・ユーティリティ
+├── docs/                   # プロジェクトドキュメント
+├── docker/                # Docker設定ファイル
+└── README.md              # このファイル
 ```
 
-## About the symlinks Folder
+## 🏗️ 技術スタック
 
-The `symlinks/` folder contains configuration files for various external tools related to Claude Code. Since Claude Code is frequently updated and configuration changes are common, having all configuration files centralized in one folder makes editing much easier. Even if related files are normally placed outside the `~/.claude/` directory, it's convenient to place them here as symbolic links for unified management.
+### フロントエンド
+- **React 18+** with TypeScript
+- **Vite** - 高速ビルドツール
+- **PWA Workbox** - Service Worker管理
+- **Tailwind CSS** - ユーティリティファーストCSS
+- **React Query** - サーバーステート管理
+- **Zustand** - クライアントステート管理
+- **Mapbox GL JS** - 地図機能
 
-In actual environments, these files are placed as symbolic links in specified locations.
+### バックエンド  
+- **Node.js 18+** with TypeScript
+- **Express.js** - Webフレームワーク
+- **Socket.io** - リアルタイム通信
+- **Prisma ORM** - データベースORM
+- **PostgreSQL + PostGIS** - 空間データベース
+- **Redis** - キャッシング・セッション管理
 
+### インフラ・ツール
+- **Docker** - コンテナ化
+- **GitHub Actions** - CI/CD
+- **AWS/GCP** - クラウドホスティング
+
+## 🚀 Gemini最適化による改善
+
+このプロジェクトは**Gemini AI**との技術相談により大幅に最適化されました：
+
+### アルゴリズム簡素化
+- **改善前**: 複雑な組み合わせ最適化アルゴリズム  
+- **改善後**: 単純な全店舗比較 `O(店舗数 × 商品数)`
+- **効果**: 開発期間短縮（4日→2日）、計算負荷軽減
+
+### PWA戦略強化  
+- **Stale-While-Revalidate**: 価格データの鮮度とオフライン両立
+- **Background Sync**: オフライン時の自動キュー処理
+- **IndexedDB**: 包括的オフラインデータ管理
+
+### 日本市場対応
+- **個人情報保護法**: プライバシー要件準拠
+- **景品表示法**: 価格情報免責表示
+- **商慣習対応**: 税込価格、特売対応
+
+## 📈 段階的スケーリング戦略
+
+| Phase | Target DAU | Architecture |
+|-------|------------|--------------|
+| **A** | 1,000 | 単一構成 |
+| **B** | 10,000 | Read Replica |
+| **C** | 50,000 | マイクロサービス |
+| **D** | 100,000+ | Kubernetes |
+
+## 📚 開発仕様書
+
+このプロジェクトは**仕様駆動開発**方式で進められており、以下の詳細な仕様書が作成されています：
+
+### 📋 `.tmp/requirements.md` (221行)
+**要件定義書** - 法的要件を含む包括的な仕様
+- 41の機能要件（FR-001〜FR-041）
+- 20の非機能要件（パフォーマンス、セキュリティ等）
+- 日本市場特有の法的対応要件
+- ユーザーストーリーと受け入れ基準
+
+### 🏗️ `.tmp/design.md` (1,925行)  
+**技術設計書** - Gemini最適化された詳細設計
+- PWA + React/Node.js アーキテクチャ  
+- PostGIS空間データベース設計
+- RESTful API + WebSocket仕様
+- セキュリティ・パフォーマンス戦略
+- テスト戦略（単体・統合・E2E）
+
+### 📝 `.tmp/tasks.md` (609行)
+**実装タスクリスト** - 4段階スケーリング計画
+- 47の詳細実装タスク
+- 4フェーズ構成（3ヶ月開発計画）
+- リソース要件とリスク管理
+- 段階的スケーリング戦略
+
+## 🔧 開発環境設定
+
+### Claude Code設定
+このプロジェクトは**Claude Code**を使用した開発が前提となっています：
+
+#### `.claude/settings.json` (共通設定)
+- プロジェクト標準の権限設定
+- MCP サーバー統合（Context7, Playwright等）
+- 自動ログ・通知システム
+- セキュリティ制限
+
+#### `.claude/settings.local.json` (個人設定)  
+- 個人環境専用設定
+- settings.jsonの権限を継承
+- Git管理対象外
+
+## 🚀 開発開始手順
+
+### 1. リポジトリクローン
 ```bash
-# Link Claude Code configuration
-ln -s /path/to/settings.json ~/.claude/settings.json
-
-# Link ccmanager configuration
-ln -s /path/to/.config/ccmanager/config.json ~/.claude/symlinks/ccmanager/config.json
+git clone https://github.com/mhcp0001/price-tracker.git
+cd price-tracker
 ```
 
-This allows configuration changes to be managed in the repository and shared across multiple environments.
-
-## Key Features
-
-### 1. Specification-Driven Development Workflow
-
-The biggest feature of this project is the 4-stage specification-driven development workflow:
-
-1. **Requirements Definition** (`/requirements`) - Convert user requests into clear functional requirements
-2. **Design** (`/design`) - Formulate technical design and architecture
-3. **Task Breakdown** (`/tasks`) - Divide tasks into implementable units
-4. **Implementation** - Systematic implementation based on task list
-
-**Note:** The design documents generated by these slash commands are output in Japanese due to the prompts configured in each command.
-
-### 2. Efficient Development Rules
-
-- **Utilize parallel processing**: Multiple independent processes are executed simultaneously
-- **Think in English, respond in Japanese**: Internal processing in English, user responses in Japanese
-- **Leverage Context7 MCP**: Always reference the latest library information
-- **Thorough verification**: Always verify with Read after Write/Edit
-
-## File Details
-
-### CLAUDE.md
-
-Defines project-specific guidelines. Contains the following content:
-
-- **Top-Level Rules**: Basic operational rules
-- **Programming Rules**: Coding conventions (when using TypeScript, etc.)
-- **Development Style**: Detailed specification-driven development workflow
-
-### settings.json
-
-Configuration file that controls Claude Code behavior:
-
-#### Environment Variable Configuration (`env`)
-```json
-{
-  "DISABLE_TELEMETRY": "1",        // Disable telemetry
-  "DISABLE_ERROR_REPORTING": "1",   // Disable error reporting
-  "API_TIMEOUT_MS": "600000"        // API timeout (10 minutes)
-}
-```
-
-#### Permission Configuration (`permissions`)
-
-**allow (allowlist)**:
-- File reading: `Read(**)`
-- Writing to specific directories: `Write(src/**)`, `Write(docs/**)`, `Write(.tmp/**)`
-- Git operations: `git init`, `git add`, `git commit`, `git push origin*`
-- Package management: `npm install`, `pnpm install`
-- MCP related: Use tools like Context7, Playwright, etc.
-
-**deny (blocklist)**:
-- Dangerous commands: `sudo`, `rm -rf`
-- Security related: Reading `.env.*` files, `id_rsa`, etc.
-- Direct database operations: `psql`, `mysql`, etc.
-
-#### Hook Configuration (`hooks`)
-
-**PostToolUse** (Automatic processing after tool use)
-- Record command history (Bash, Read, Write, etc.)
-- Automatic textlint execution when editing Markdown files
-
-**Notification** (Notification settings - macOS)
-- Display work progress notifications
-
-**Stop** (Processing when work is completed)
-- Display completion notifications
-
-#### MCP Server Configuration (`enabledMcpjsonServers`)
-- GitHub integration (multiple account support)
-- Context7 (document retrieval)
-- Playwright (browser automation)
-- Readability (web article reading)
-- textlint (Japanese proofreading)
-
-### Custom Commands (commands/)
-
-| Command         | Description                                        |
-| --------------- | -------------------------------------------------- |
-| `/spec`         | Complete specification-driven development workflow |
-| `/requirements` | Requirements definition phase execution            |
-| `/design`       | Technical design phase execution                   |
-| `/tasks`        | Task breakdown phase execution                     |
-| `/code-review`  | Execute code review with detailed analysis         |
-| `/search`       | Google web search using gemini-cli                 |
-| `/d-search`     | Deep codebase analysis using gemini-cli            |
-| `/marp`         | Marp presentation creation command                 |
-| `/textlint`     | File proofreading and correction with textlint     |
-
-## Setup
-
-### 1. Clone the Repository
-
+### 2. 開発環境構築
 ```bash
-git clone https://github.com/nokonoko1203/claude-code-settings.git
-cd claude-code-settings
+# 仕様書確認
+ls .tmp/
+# requirements.md, design.md, tasks.md
+
+# Claude Code設定確認  
+ls .claude/
+# CLAUDE.md, settings.json, settings.local.json
 ```
 
-### 2. Apply Configuration to Claude Code
+### 3. 実装フェーズ開始
 
-You can either copy the repository contents to `~/.claude/` or create a symbolic link to keep it synchronized with the repository.
-
-#### Option A: Copy Contents to ~/.claude/
+#### Phase 1: 基盤構築（2-3週間）
 ```bash
-# Copy configuration files to ~/.claude/ directory
-cp CLAUDE.md ~/.claude/
-cp settings.json ~/.claude/
-cp .textlintrc.json ~/.claude/
-cp -r commands ~/.claude/
-cp -r symlinks ~/.claude/
+# 新しいブランチ作成
+git checkout -b feature/foundation-setup
+
+# タスク T001-T013 実行
+# - プロジェクト初期設定
+# - Docker開発環境 
+# - PostgreSQL/Redis設定
+# - JWT認証システム
 ```
 
-#### Option B: Link Repository to ~/.claude/ (Recommended)
+#### Phase 2: コア機能実装（4-5週間）
 ```bash
-# Create symbolic link to keep repository synchronized
-ln -s /path/to/claude-code-settings ~/.claude/claude-code-settings
-# Then link individual files
-ln -s ~/.claude/claude-code-settings/CLAUDE.md ~/.claude/
-ln -s ~/.claude/claude-code-settings/settings.json ~/.claude/
-ln -s ~/.claude/claude-code-settings/commands ~/.claude/
+git checkout -b feature/core-features
+
+# タスク T014-T028 実行  
+# - リアルタイム価格比較
+# - 買い物リスト最適化
+# - WebSocket通信
+# - 地理位置・地図機能
 ```
 
-### 3. Configure External Tools Using Symbolic Links
+### 4. 開発ツール設定
 
-Create symbolic links from external tool locations to `~/.claude/symlinks/` for centralized management:
+#### 必要なツール
+- **Node.js 18+**
+- **Docker & Docker Compose**  
+- **PostgreSQL 15+** (PostGIS拡張)
+- **Redis 7+**
+- **GitHub CLI** (PR作成用)
 
-```bash
-# Create symlinks directory structure
-mkdir -p ~/.claude/symlinks/config/ccmanager/
+## 📊 プロジェクト成果物
 
-# Link Claude Code global configuration to symlinks folder
-ln -s ~/claude.json ~/.claude/symlinks/claude.json
+### Pull Request
+- **[PR #1](https://github.com/mhcp0001/price-tracker/pull/1)**: 包括的な仕様書作成
+  - 3ファイル、2,818行の追加
+  - Gemini最適化による技術改善
+  - 日本市場対応の法的要件
 
-# Link ccmanager configuration to symlinks folder
-ln -s ~/.config/ccmanager/config.json ~/.claude/symlinks/config/ccmanager/config.json
-```
+### 開発手法
+- **仕様駆動開発**: 4段階ワークフロー（要件→設計→タスク→実装）
+- **Gemini AI統合**: 技術検証とベストプラクティス相談
+- **段階的スケーリング**: 1K → 100K+ DAU対応
 
-This approach centralizes all Claude Code-related configuration files in the `~/.claude/` directory for easier management.
+## 📚 参考資料
 
-## References
-
+### 技術ドキュメント
 - [Claude Code overview](https://docs.anthropic.com/en/docs/claude-code)
-- [Model Context Protocol (MCP)](https://docs.anthropic.com/en/docs/mcp)
-- [textlint](https://textlint.github.io/)
-- [CCManager](https://github.com/kbwo/ccmanager)
-- [Context7](https://context7.com/)
+- [React PWA Guide](https://create-react-app.dev/docs/making-a-progressive-web-app/)
+- [PostGIS Documentation](https://postgis.net/documentation/)
+- [Socket.io Documentation](https://socket.io/docs/)
 
-## License
+### 日本市場関連
+- [個人情報保護法](https://www.ppc.go.jp/)
+- [景品表示法](https://www.caa.go.jp/policies/policy/representation/)
 
-This project is released under the MIT License.
+## 📞 Contact & Contribution
+
+このプロジェクトは**オープンソース**として開発されています。
+- **Issues**: バグ報告・機能要求
+- **Pull Requests**: 実装・改善の貢献歓迎
+- **Discussions**: 技術相談・アイデア共有
+
+## 📄 License
+
+This project is released under the **MIT License**.
