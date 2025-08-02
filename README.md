@@ -141,18 +141,46 @@ git clone https://github.com/mhcp0001/price-tracker.git
 cd price-tracker
 ```
 
-### 2. 開発環境構築
-```bash
-# 仕様書確認
-ls .tmp/
-# requirements.md, design.md, tasks.md
+### 2. Supabaseプロジェクトの作成
 
-# Claude Code設定確認  
-ls .claude/
-# CLAUDE.md, settings.json, settings.local.json
+1. [Supabase](https://supabase.com)にアクセスしてアカウントを作成
+2. 新しいプロジェクトを作成（無料プラン）
+3. プロジェクトのダッシュボードから以下の情報を取得：
+   - Project URL (`VITE_SUPABASE_URL`)
+   - Anon public key (`VITE_SUPABASE_ANON_KEY`)
+
+### 3. データベースのセットアップ
+
+1. SupabaseダッシュボードのSQL Editorを開く
+2. 以下のSQLファイルを順番に実行：
+   - `supabase/schema.sql` - テーブルとインデックスの作成
+   - `supabase/policies.sql` - RLSポリシーの設定
+   - `supabase/functions.sql` - ストアドファンクションの作成
+   - `supabase/seed.sql` - サンプルデータの投入
+
+### 4. 環境変数の設定
+
+`.env.example`をコピーして`.env`を作成し、Supabaseの情報を設定：
+
+```bash
+cp .env.example .env
 ```
 
-### 3. 実装フェーズ開始
+`.env`ファイルを編集：
+```
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+VITE_MAPBOX_ACCESS_TOKEN=your_mapbox_access_token
+```
+
+### 5. 依存関係のインストールと起動
+
+```bash
+npm install
+npm run dev
+```
+
+### 6. 実装フェーズ開始
 
 #### Phase 1: 基盤構築（2-3週間）
 ```bash

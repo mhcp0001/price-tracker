@@ -73,7 +73,8 @@
       "Bash(gh run list:*)",
       "Bash(gh run view:*)",
       "Bash(cp:*)",
-      "Bash(npm install)"
+      "Bash(npm install)",
+      "mcp__ide__getDiagnostics"
     ],
     "deny": [
       "Bash(sudo:*)",
