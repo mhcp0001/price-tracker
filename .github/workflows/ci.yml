@@ -106,7 +106,7 @@ jobs:
           VITE_MAPBOX_ACCESS_TOKEN: ${{ secrets.MAPBOX_ACCESS_TOKEN_TEST }}
 
       - name: Upload Playwright report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-report
@@ -210,10 +210,9 @@ jobs:
         run: npm audit --audit-level=high
 
       - name: Run dependency vulnerability scan
-        uses: securecodewarrior/github-action-add-sarif@v1
-        with:
-          sarif-file: 'npm-audit.sarif'
-        continue-on-error: true
+        run: |
+          npm audit --audit-level=moderate --json > npm-audit.json || true
+          echo "Dependency scan completed"
 
   # デプロイ（mainブランチのみ）
   deploy:
