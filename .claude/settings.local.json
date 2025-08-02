@@ -60,7 +60,9 @@
       "mcp__playwright__browser_generate_playwright_test",
       "Bash(git checkout:*)",
       "Bash(git pull:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ],
     "deny": [
       "Bash(sudo:*)",
