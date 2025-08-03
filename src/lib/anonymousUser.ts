@@ -3,29 +3,33 @@ import { supabase } from './supabase'
 export class AnonymousUserService {
   private static STORAGE_KEY = 'price-tracker-user-id'
   
-  static getAnonymousUserId(): string {
+  static async getAnonymousUserId(): Promise<string> {
     let userId = localStorage.getItem(this.STORAGE_KEY)
     
     if (!userId) {
       userId = crypto.randomUUID()
       localStorage.setItem(this.STORAGE_KEY, userId)
-      
-      // Supabaseに匿名ユーザー作成（エラーは無視）
-      this.createAnonymousUser(userId).catch(console.error)
     }
+    
+    // 常に作成を試みる（既に存在する場合はエラーを無視）
+    await this.createAnonymousUser(userId)
     
     return userId
   }
   
   private static async createAnonymousUser(userId: string) {
-    try {
-      await supabase.from('anonymous_users').insert({
-        id: userId,
-        display_name: `ユーザー${userId.slice(0, 8)}`,
-      })
-    } catch (error) {
-      // 既に存在する場合はエラーを無視
-      console.log('Anonymous user creation error (ignored):', error)
+    const { data, error } = await supabase.from('anonymous_users').insert({
+      id: userId,
+      display_name: `ユーザー${userId.slice(0, 8)}`,
+    }).select()
+    
+    if (error) {
+      // 409エラー（既に存在）の場合は無視、それ以外はログ出力
+      if (error.code !== '23505') { // unique_violation
+        console.log('Anonymous user creation error:', error)
+      }
+    } else {
+      console.log('Anonymous user created:', userId)
     }
   }
   

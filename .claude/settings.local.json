@@ -74,7 +74,10 @@
       "Bash(gh run view:*)",
       "Bash(cp:*)",
       "Bash(npm install)",
-      "mcp__ide__getDiagnostics"
+      "mcp__ide__getDiagnostics",
+      "Bash(pkill:*)",
+      "Bash(true)",
+      "Bash(npm run dev:*)"
     ],
     "deny": [
       "Bash(sudo:*)",

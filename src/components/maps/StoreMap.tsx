@@ -60,44 +60,39 @@ export const StoreMap = ({ stores, center, onStoreSelect }: StoreMapProps) => {
 
   // 店舗マーカーの更新
   useEffect(() => {
-    if (!map.current || !mapLoaded) return
+    if (!map.current || !mapLoaded || stores.length === 0) return
+
+    // マーカーが既に作成されている場合はスキップ
+    if (markers.current.length === stores.length) {
+      console.log('Markers already created, skipping update')
+      return
+    }
+
+    console.log('Updating store markers:', stores.length, 'stores')
 
     // 既存のマーカーをクリア
-    markers.current.forEach(marker => marker.remove())
+    markers.current.forEach(marker => {
+      marker.remove()
+    })
     markers.current = []
 
-    // 新しいマーカーを追加
+    // 新しいマーカーを追加（現在地マーカーと同じ方法で）
     stores.forEach(store => {
-      if (!store.location_lat || !store.location_lng) return
+      if (!store.location_lat || !store.location_lng) {
+        console.log('Skipping store without location:', store.name)
+        return
+      }
 
-      const el = document.createElement('div')
-      el.className = 'store-marker'
-      el.style.width = '30px'
-      el.style.height = '30px'
-      el.style.backgroundImage = 'url(data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%233B82F6"%3E%3Cpath d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/%3E%3C/svg%3E)'
-      el.style.backgroundSize = 'cover'
-      el.style.cursor = 'pointer'
-
-      const marker = new mapboxgl.Marker(el)
+      // 店舗マーカーを作成
+      const storeMarker = new mapboxgl.Marker({ color: '#3B82F6' })
         .setLngLat([store.location_lng, store.location_lat])
         .setPopup(
-          new mapboxgl.Popup({ offset: 25 }).setHTML(`
-            <div class="p-2">
-              <h3 class="font-bold">${store.name}</h3>
-              ${store.distance_meters ? `<p class="text-sm">${store.distance_meters}m</p>` : ''}
-              ${store.address ? `<p class="text-xs text-gray-600">${store.address}</p>` : ''}
-            </div>
-          `)
+          new mapboxgl.Popup({ closeOnClick: false })
+            .setHTML(`<p><strong>${store.name}</strong></p>`)
         )
         .addTo(map.current!)
 
-      el.addEventListener('click', () => {
-        if (onStoreSelect) {
-          onStoreSelect(store)
-        }
-      })
-
-      markers.current.push(marker)
+      markers.current.push(storeMarker)
     })
 
     // すべてのマーカーが見えるように調整
@@ -116,7 +111,7 @@ export const StoreMap = ({ stores, center, onStoreSelect }: StoreMapProps) => {
 
       map.current.fitBounds(bounds, { padding: 50 })
     }
-  }, [stores, mapLoaded, center, onStoreSelect])
+  }, [stores, mapLoaded])
 
   return (
     <div className="relative w-full h-full">

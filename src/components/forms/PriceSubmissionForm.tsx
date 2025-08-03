@@ -64,12 +64,15 @@ export const PriceSubmissionForm = ({ store, onClose, onSuccess }: PriceSubmissi
         product = await DatabaseService.findOrCreateProduct(productName)
       }
 
+      // 匿名ユーザーIDを取得（必要に応じて作成）
+      const anonymousUserId = await AnonymousUserService.getAnonymousUserId()
+      
       // 価格を投稿
       await DatabaseService.submitPrice({
         productId: product.id,
         storeId: store.id,
         price: priceValue,
-        anonymousUserId: AnonymousUserService.getAnonymousUserId(),
+        anonymousUserId: anonymousUserId,
       })
 
       toast.success('価格を投稿しました！')

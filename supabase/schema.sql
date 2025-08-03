@@ -117,13 +117,13 @@ CREATE INDEX ON public.prices ("reported_by");
 CREATE INDEX idx_stores_location ON public.stores USING GIST (location);
 
 -- 4.3. 日本語全文検索用のインデックス
--- `pg_catalog.japanese` を利用して日本語のテキストを適切に分割し、検索可能にします。
+-- pg_trgmを使用した日本語対応の全文検索インデックス
 -- stores テーブル
-CREATE INDEX idx_stores_name_fts ON public.stores USING GIN (to_tsvector('pg_catalog.japanese', name));
+CREATE INDEX idx_stores_name_trgm ON public.stores USING GIN (name gin_trgm_ops);
 
 -- products テーブル
-CREATE INDEX idx_products_name_fts ON public.products USING GIN (to_tsvector('pg_catalog.japanese', name));
-CREATE INDEX idx_products_description_fts ON public.products USING GIN (to_tsvector('pg_catalog.japanese', description));
+CREATE INDEX idx_products_name_trgm ON public.products USING GIN (name gin_trgm_ops);
+CREATE INDEX idx_products_description_trgm ON public.products USING GIN (description gin_trgm_ops);
 
 
 -- 5. Row Level Security (RLS) の有効化

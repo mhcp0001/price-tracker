@@ -61,10 +61,10 @@ BEGIN
     p.image_url
   FROM products p
   WHERE 
-    to_tsvector('pg_catalog.japanese', p.name) @@ to_tsquery('pg_catalog.japanese', search_query)
+    p.name % search_query  -- pg_trgmによる類似度検索
     OR p.name ILIKE '%' || search_query || '%'
   ORDER BY 
-    ts_rank(to_tsvector('pg_catalog.japanese', p.name), to_tsquery('pg_catalog.japanese', search_query)) DESC
+    similarity(p.name, search_query) DESC
   LIMIT limit_count;
 END;
 $$ LANGUAGE plpgsql;
