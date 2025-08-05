@@ -77,6 +77,8 @@ pids/
 .cache/
 .parcel-cache/
 .eslintcache
+.vite/
+.vite-inspect/
 
 # Serverless
 .serverless/
@@ -96,3 +98,7 @@ prisma/migrations/
 
 # Local development
 docker-compose.override.yml
+
+# Windows
+nul
+NUL

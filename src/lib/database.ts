@@ -127,4 +127,103 @@ export class DatabaseService {
     
     return data || []
   }
+
+  // 商品IDで商品取得
+  static async getProductById(productId: string): Promise<Product | null> {
+    const { data, error } = await supabase
+      .from('products')
+      .select('*')
+      .eq('id', productId)
+      .single()
+    
+    if (error) {
+      console.error('Error fetching product:', error)
+      return null
+    }
+    
+    return data
+  }
+
+  // 商品の価格統計取得
+  static async getProductPriceStats(productId: string): Promise<{
+    min_price: number | null
+    max_price: number | null
+    avg_price: number | null
+    store_count: number
+  }> {
+    const { data, error } = await supabase
+      .from('latest_prices')
+      .select('price')
+      .eq('product_id', productId)
+    
+    if (error || !data || data.length === 0) {
+      return {
+        min_price: null,
+        max_price: null,
+        avg_price: null,
+        store_count: 0
+      }
+    }
+    
+    const prices = data.map(d => d.price)
+    return {
+      min_price: Math.min(...prices),
+      max_price: Math.max(...prices),
+      avg_price: prices.reduce((a, b) => a + b, 0) / prices.length,
+      store_count: prices.length
+    }
+  }
+
+  // 商品の店舗別価格を距離付きで取得
+  static async getProductPricesWithDistance(
+    productId: string,
+    userLat?: number | null,
+    userLng?: number | null
+  ): Promise<any[]> {
+    const { data, error } = await supabase
+      .rpc('get_product_prices_with_distance', {
+        product_id_param: productId,
+        user_lat: userLat || null,
+        user_lng: userLng || null
+      })
+    
+    if (error) {
+      console.error('Error fetching product prices:', error)
+      throw error
+    }
+    
+    return data || []
+  }
+
+  // 価格履歴の日別集計取得
+  static async getPriceHistory(productId: string, periodDays: number): Promise<any[]> {
+    const { data, error } = await supabase
+      .rpc('get_price_history', {
+        product_id_param: productId,
+        period_days: periodDays
+      })
+    
+    if (error) {
+      console.error('Error fetching price history:', error)
+      throw error
+    }
+    
+    return data || []
+  }
+
+  // 商品検索（価格情報付き）
+  static async searchProductsWithPrices(query: string, limit = 10): Promise<any[]> {
+    const { data, error } = await supabase
+      .rpc('search_products_with_prices', {
+        search_query: query,
+        limit_count: limit
+      })
+    
+    if (error) {
+      console.error('Error searching products with prices:', error)
+      return []
+    }
+    
+    return data || []
+  }
 }
