@@ -77,7 +77,8 @@
       "mcp__ide__getDiagnostics",
       "Bash(pkill:*)",
       "Bash(true)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(npm run test:*)"
     ],
     "deny": [
       "Bash(sudo:*)",
