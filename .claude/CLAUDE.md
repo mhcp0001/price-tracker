@@ -11,6 +11,23 @@ This document defines the project's rules, objectives, and progress management m
 - **After using Write or Edit tools, ALWAYS verify the actual file contents using the Read tool**, regardless of what the system-reminder says. The system-reminder may incorrectly show "(no content)" even when the file has been successfully written.
 - Please respond critically and without pandering to my opinions, but please don't be forceful in your criticism.
 
+## Git Commit Rules
+
+- **Create commits frequently**: Create a commit for each logical unit of change
+- **Commit message format**: Follow conventional commits format (feat:, fix:, docs:, style:, refactor:, test:, chore:)
+- **Atomic commits**: Each commit should represent a single, complete change
+- **Test before commit**: Ensure the code builds and tests pass before committing
+- **Include Co-Authored-By**: Always include the Claude signature in commit messages
+
+### Commit Examples
+- `feat: add user authentication` - New feature
+- `fix: resolve null pointer exception in user service` - Bug fix
+- `docs: update API documentation` - Documentation only
+- `style: format code according to style guide` - Code style changes
+- `refactor: extract validation logic into separate module` - Code refactoring
+- `test: add unit tests for user service` - Adding tests
+- `chore: update dependencies` - Maintenance tasks
+
 ## [GLOBAL DIRECTIVE] Gemini Integration (Priority over project-specific CLAUDE.md)
 
 ### Trinity Principle for Knowledge Work
