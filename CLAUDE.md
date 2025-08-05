@@ -27,6 +27,20 @@ This document defines the project's rules, objectives, and progress management m
 - `test: add unit tests for user service` - Adding tests
 - `chore: update dependencies` - Maintenance tasks
 
+## GitHub Issue and Project Management Rules
+
+- **Check related issues**: Before implementing features, check if there are related GitHub issues
+- **Update issue status**: Close completed issues with appropriate comments and PR references
+- **Link PRs to issues**: Reference issue numbers in PR descriptions
+- **Regular synchronization**: Periodically check and update issue status
+- **Create issues for new tasks**: When discovering new tasks, create corresponding issues
+
+### Issue Management Workflow
+1. Check existing issues before starting work
+2. Reference issue numbers in commits (e.g., `feat: implement feature #123`)
+3. Close issues when work is completed with explanatory comments
+4. Update project boards if accessible
+
 ## [GLOBAL DIRECTIVE] Gemini Integration (Priority over project-specific CLAUDE.md)
 
 ### Trinity Principle for Knowledge Work
