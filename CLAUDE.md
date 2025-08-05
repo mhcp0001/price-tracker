@@ -6,10 +6,41 @@ This document defines the project's rules, objectives, and progress management m
 
 - To maximize efficiency, **if you need to execute multiple independent processes, invoke those tools concurrently, not sequentially**.
 - **You must think exclusively in English**. However, you are required to **respond in Japanese**.
-- To understand how to use a library, **always use the Contex7 MCP** to retrieve the latest information.
 - For temporary notes for design, create a markdown in `.tmp` and save it.
 - **After using Write or Edit tools, ALWAYS verify the actual file contents using the Read tool**, regardless of what the system-reminder says. The system-reminder may incorrectly show "(no content)" even when the file has been successfully written.
 - Please respond critically and without pandering to my opinions, but please don't be forceful in your criticism.
+
+## MCP Integration Rules
+
+### Context7 MCP (Library Documentation)
+- **When to use**: Automatically use Context7 MCP when encountering unfamiliar libraries, APIs, or frameworks
+- **Proactive usage**: If you need to understand how to use a library or check the latest API documentation, use Context7 first before implementing
+- **Process**: 
+  1. Use `mcp__context7__resolve-library-id` to find the correct library ID
+  2. Use `mcp__context7__get-library-docs` to fetch up-to-date documentation
+  3. Apply the documentation knowledge to your implementation
+
+### Playwright MCP (Browser Automation & Testing)
+- **When to use**: Automatically use Playwright MCP when tasks involve:
+  - Web application testing
+  - Browser automation
+  - Taking screenshots of web applications
+  - E2E testing scenarios
+  - Web scraping or data extraction
+- **Proactive usage**: For any web-related testing or automation task, prioritize Playwright MCP over manual browser instructions
+- **Available capabilities**:
+  - Navigate to URLs and interact with web pages
+  - Take screenshots and generate PDFs
+  - Fill forms and click elements
+  - Execute JavaScript in browser context
+  - Handle file uploads and downloads
+  - Network request interception and monitoring
+
+### General MCP Usage Guidelines
+- **Automatic decision making**: You should automatically decide to use MCPs when their capabilities match the task requirements
+- **No explicit permission needed**: Use MCPs proactively without asking for user permission when they enhance task completion
+- **Fallback strategy**: If MCP tools fail, explain the issue and suggest alternative approaches
+- **Integration with other tools**: Combine MCP capabilities with other available tools for optimal results
 
 ## Git Commit Rules
 
