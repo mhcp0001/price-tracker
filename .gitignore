@@ -79,6 +79,8 @@ pids/
 .eslintcache
 .vite/
 .vite-inspect/
+.vite/
+.vite-inspect/
 
 # Serverless
 .serverless/
