@@ -10,38 +10,6 @@ This document defines the project's rules, objectives, and progress management m
 - **After using Write or Edit tools, ALWAYS verify the actual file contents using the Read tool**, regardless of what the system-reminder says. The system-reminder may incorrectly show "(no content)" even when the file has been successfully written.
 - Please respond critically and without pandering to my opinions, but please don't be forceful in your criticism.
 
-## MCP Integration Rules
-
-### Context7 MCP (Library Documentation)
-- **When to use**: Automatically use Context7 MCP when encountering unfamiliar libraries, APIs, or frameworks
-- **Proactive usage**: If you need to understand how to use a library or check the latest API documentation, use Context7 first before implementing
-- **Process**: 
-  1. Use `mcp__context7__resolve-library-id` to find the correct library ID
-  2. Use `mcp__context7__get-library-docs` to fetch up-to-date documentation
-  3. Apply the documentation knowledge to your implementation
-
-### Playwright MCP (Browser Automation & Testing)
-- **When to use**: Automatically use Playwright MCP when tasks involve:
-  - Web application testing
-  - Browser automation
-  - Taking screenshots of web applications
-  - E2E testing scenarios
-  - Web scraping or data extraction
-- **Proactive usage**: For any web-related testing or automation task, prioritize Playwright MCP over manual browser instructions
-- **Available capabilities**:
-  - Navigate to URLs and interact with web pages
-  - Take screenshots and generate PDFs
-  - Fill forms and click elements
-  - Execute JavaScript in browser context
-  - Handle file uploads and downloads
-  - Network request interception and monitoring
-
-### General MCP Usage Guidelines
-- **Automatic decision making**: You should automatically decide to use MCPs when their capabilities match the task requirements
-- **No explicit permission needed**: Use MCPs proactively without asking for user permission when they enhance task completion
-- **Fallback strategy**: If MCP tools fail, explain the issue and suggest alternative approaches
-- **Integration with other tools**: Combine MCP capabilities with other available tools for optimal results
-
 ## Git Commit Rules
 
 - **Create commits frequently**: Create a commit for each logical unit of change
@@ -58,20 +26,6 @@ This document defines the project's rules, objectives, and progress management m
 - `refactor: extract validation logic into separate module` - Code refactoring
 - `test: add unit tests for user service` - Adding tests
 - `chore: update dependencies` - Maintenance tasks
-
-## GitHub Issue and Project Management Rules
-
-- **Check related issues**: Before implementing features, check if there are related GitHub issues
-- **Update issue status**: Close completed issues with appropriate comments and PR references
-- **Link PRs to issues**: Reference issue numbers in PR descriptions
-- **Regular synchronization**: Periodically check and update issue status
-- **Create issues for new tasks**: When discovering new tasks, create corresponding issues
-
-### Issue Management Workflow
-1. Check existing issues before starting work
-2. Reference issue numbers in commits (e.g., `feat: implement feature #123`)
-3. Close issues when work is completed with explanatory comments
-4. Update project boards if accessible
 
 ## [GLOBAL DIRECTIVE] Gemini Integration (Priority over project-specific CLAUDE.md)
 
