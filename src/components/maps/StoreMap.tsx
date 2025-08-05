@@ -92,6 +92,11 @@ export const StoreMap = ({ stores, center, onStoreSelect }: StoreMapProps) => {
         )
         .addTo(map.current!)
 
+      // マーカークリック時の処理
+      storeMarker.getElement().addEventListener('click', () => {
+        onStoreSelect?.(store)
+      })
+
       markers.current.push(storeMarker)
     })
 
