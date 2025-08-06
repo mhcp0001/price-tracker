@@ -39,6 +39,7 @@ export default defineConfig({
       'dist/',
       'build/',
       'e2e/',
+      '**/*.{test,spec}.{js,ts,jsx,tsx}/**/*',
     ],
   },
 })

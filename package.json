@@ -42,6 +42,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
     "@mapbox/mapbox-gl-geocoder": "^5.0.0",
+    "@rollup/rollup-win32-x64-msvc": "^4.46.2",
     "@supabase/supabase-js": "^2.38.0",
     "clsx": "^2.0.0",
     "date-fns": "^2.30.0",
