@@ -15,7 +15,7 @@
   - img
   - heading "現在地周辺の店舗" [level=2]
   - region "Map"
-  - button "Map marker":
+  - button "Map marker" [expanded]:
     - img
   - button "Zoom in"
   - button "Zoom out"
@@ -33,6 +33,7 @@
     - link "Map feedback":
       - /url: https://apps.mapbox.com/feedback/?owner=mapbox&id=streets-v12&access_token=pk.eyJ1IjoibWhjcDAwMDEiLCJhIjoiY20yOTY5ZmN2MDI0MDJpcHpwenBud3B1aCJ9.CvqqdEo9XuRUhnlqO1vpMA#/139.6503/35.6762/14
       - text: Improve this map
+  - paragraph: 現在地
   - heading "価格を投稿" [level=2]
   - paragraph: 店舗を選択して価格を投稿してください
 ```

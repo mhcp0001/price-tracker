@@ -78,7 +78,9 @@
       "Bash(pkill:*)",
       "Bash(true)",
       "Bash(npm run dev:*)",
-      "Bash(npm run test:*)"
+      "Bash(npm run test:*)",
+      "Bash(git worktree:*)",
+      "mcp__playwright__playwright_navigate"
     ],
     "deny": [
       "Bash(sudo:*)",

@@ -11,7 +11,7 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
-      "actualWorkers": 1
+      "actualWorkers": 12
     },
     "preserveOutput": "always",
     "reporter": [
@@ -41,7 +41,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 12
         },
         "id": "chromium",
         "name": "chromium",
@@ -57,7 +57,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 12
         },
         "id": "firefox",
         "name": "firefox",
@@ -73,7 +73,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 12
         },
         "id": "webkit",
         "name": "webkit",
@@ -89,7 +89,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 12
         },
         "id": "Mobile Chrome",
         "name": "Mobile Chrome",
@@ -105,7 +105,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 12
         },
         "id": "Mobile Safari",
         "name": "Mobile Safari",
@@ -159,7 +159,7 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 20815,
+                      "duration": 22617,
                       "error": {
                         "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n",
                         "stack": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:24:16",
@@ -183,7 +183,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-08-05T23:54:15.961Z",
+                      "startTime": "2025-08-06T12:21:45.162Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -216,6 +216,1042 @@
               "file": "price-submission.spec.ts",
               "line": 12,
               "column": 3
+            },
+            {
+              "title": "should show validation errors for invalid input",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 22106,
+                      "error": {
+                        "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n",
+                        "stack": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:55:16",
+                        "location": {
+                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                          "column": 16,
+                          "line": 55
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 53 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.mapboxgl-canvas'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m })\n \u001b[90m 54 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m5000\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 55 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'.mapboxgl-marker:first-child'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 56 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m window\u001b[33m.\u001b[39mscrollTo(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m document\u001b[33m.\u001b[39mbody\u001b[33m.\u001b[39mscrollHeight))\n \u001b[90m 57 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button:has-text(\"価格を投稿する\")'\u001b[39m)\n \u001b[90m 58 |\u001b[39m     \u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                            "column": 16,
+                            "line": 55
+                          },
+                          "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n\n  53 |     await page.waitForSelector('.mapboxgl-canvas', { timeout: 15000 })\n  54 |     await page.waitForTimeout(5000)\n> 55 |     await page.click('.mapboxgl-marker:first-child')\n     |                ^\n  56 |     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))\n  57 |     await page.click('button:has-text(\"価格を投稿する\")')\n  58 |     \n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:55:16"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-06T12:21:45.163Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                        "column": 16,
+                        "line": 55
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "f04d8cd821ff75af7f70-a524b77d3dc465c469ca",
+              "file": "price-submission.spec.ts",
+              "line": 51,
+              "column": 3
+            },
+            {
+              "title": "should handle network errors gracefully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 22554,
+                      "error": {
+                        "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n",
+                        "stack": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:75:16",
+                        "location": {
+                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                          "column": 16,
+                          "line": 75
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 73 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.mapboxgl-canvas'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m })\n \u001b[90m 74 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m5000\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 75 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'.mapboxgl-marker:first-child'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 76 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m window\u001b[33m.\u001b[39mscrollTo(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m document\u001b[33m.\u001b[39mbody\u001b[33m.\u001b[39mscrollHeight))\n \u001b[90m 77 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button:has-text(\"価格を投稿する\")'\u001b[39m)\n \u001b[90m 78 |\u001b[39m     \u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                            "column": 16,
+                            "line": 75
+                          },
+                          "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n\n  73 |     await page.waitForSelector('.mapboxgl-canvas', { timeout: 15000 })\n  74 |     await page.waitForTimeout(5000)\n> 75 |     await page.click('.mapboxgl-marker:first-child')\n     |                ^\n  76 |     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))\n  77 |     await page.click('button:has-text(\"価格を投稿する\")')\n  78 |     \n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:75:16"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-06T12:21:45.148Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                        "column": 16,
+                        "line": 75
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "f04d8cd821ff75af7f70-15aa29292ffb7784a7da",
+              "file": "price-submission.spec.ts",
+              "line": 66,
+              "column": 3
+            },
+            {
+              "title": "user can submit a price successfully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 23073,
+                      "error": {
+                        "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n",
+                        "stack": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:24:16",
+                        "location": {
+                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                          "column": 16,
+                          "line": 24
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 22 |\u001b[39m     \n \u001b[90m 23 |\u001b[39m     \u001b[90m// 地図上の店舗マーカーをクリック（Mapboxマーカーは特殊な要素）\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 24 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'.mapboxgl-marker:first-child'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 25 |\u001b[39m     \n \u001b[90m 26 |\u001b[39m     \u001b[90m// 4. ページの下部にスクロールして価格投稿セクションを表示\u001b[39m\n \u001b[90m 27 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m window\u001b[33m.\u001b[39mscrollTo(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m document\u001b[33m.\u001b[39mbody\u001b[33m.\u001b[39mscrollHeight))\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                            "column": 16,
+                            "line": 24
+                          },
+                          "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n\n  22 |     \n  23 |     // 地図上の店舗マーカーをクリック（Mapboxマーカーは特殊な要素）\n> 24 |     await page.click('.mapboxgl-marker:first-child')\n     |                ^\n  25 |     \n  26 |     // 4. ページの下部にスクロールして価格投稿セクションを表示\n  27 |     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:24:16"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-06T12:21:45.164Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-firefox\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-firefox\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-firefox\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                        "column": 16,
+                        "line": 24
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "f04d8cd821ff75af7f70-e485518f9d24d6e5025a",
+              "file": "price-submission.spec.ts",
+              "line": 12,
+              "column": 3
+            },
+            {
+              "title": "should show validation errors for invalid input",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "failed",
+                      "duration": 22449,
+                      "error": {
+                        "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n",
+                        "stack": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:55:16",
+                        "location": {
+                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                          "column": 16,
+                          "line": 55
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 53 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.mapboxgl-canvas'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m })\n \u001b[90m 54 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m5000\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 55 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'.mapboxgl-marker:first-child'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 56 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m window\u001b[33m.\u001b[39mscrollTo(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m document\u001b[33m.\u001b[39mbody\u001b[33m.\u001b[39mscrollHeight))\n \u001b[90m 57 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button:has-text(\"価格を投稿する\")'\u001b[39m)\n \u001b[90m 58 |\u001b[39m     \u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                            "column": 16,
+                            "line": 55
+                          },
+                          "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n\n  53 |     await page.waitForSelector('.mapboxgl-canvas', { timeout: 15000 })\n  54 |     await page.waitForTimeout(5000)\n> 55 |     await page.click('.mapboxgl-marker:first-child')\n     |                ^\n  56 |     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))\n  57 |     await page.click('button:has-text(\"価格を投稿する\")')\n  58 |     \n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:55:16"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-06T12:21:45.162Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-firefox\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-firefox\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-firefox\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                        "column": 16,
+                        "line": 55
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "f04d8cd821ff75af7f70-6f2a244f79df2611a5ef",
+              "file": "price-submission.spec.ts",
+              "line": 51,
+              "column": 3
+            },
+            {
+              "title": "should handle network errors gracefully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "failed",
+                      "duration": 22615,
+                      "error": {
+                        "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n",
+                        "stack": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:75:16",
+                        "location": {
+                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                          "column": 16,
+                          "line": 75
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 73 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.mapboxgl-canvas'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m })\n \u001b[90m 74 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m5000\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 75 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'.mapboxgl-marker:first-child'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 76 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m window\u001b[33m.\u001b[39mscrollTo(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m document\u001b[33m.\u001b[39mbody\u001b[33m.\u001b[39mscrollHeight))\n \u001b[90m 77 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button:has-text(\"価格を投稿する\")'\u001b[39m)\n \u001b[90m 78 |\u001b[39m     \u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                            "column": 16,
+                            "line": 75
+                          },
+                          "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n\n  73 |     await page.waitForSelector('.mapboxgl-canvas', { timeout: 15000 })\n  74 |     await page.waitForTimeout(5000)\n> 75 |     await page.click('.mapboxgl-marker:first-child')\n     |                ^\n  76 |     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))\n  77 |     await page.click('button:has-text(\"価格を投稿する\")')\n  78 |     \n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:75:16"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-06T12:21:45.163Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-firefox\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-firefox\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-firefox\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                        "column": 16,
+                        "line": 75
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "f04d8cd821ff75af7f70-668bb59c66ae00922d65",
+              "file": "price-submission.spec.ts",
+              "line": 66,
+              "column": 3
+            },
+            {
+              "title": "user can submit a price successfully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 6,
+                      "status": "failed",
+                      "duration": 22998,
+                      "error": {
+                        "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n",
+                        "stack": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:24:16",
+                        "location": {
+                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                          "column": 16,
+                          "line": 24
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 22 |\u001b[39m     \n \u001b[90m 23 |\u001b[39m     \u001b[90m// 地図上の店舗マーカーをクリック（Mapboxマーカーは特殊な要素）\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 24 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'.mapboxgl-marker:first-child'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 25 |\u001b[39m     \n \u001b[90m 26 |\u001b[39m     \u001b[90m// 4. ページの下部にスクロールして価格投稿セクションを表示\u001b[39m\n \u001b[90m 27 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m window\u001b[33m.\u001b[39mscrollTo(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m document\u001b[33m.\u001b[39mbody\u001b[33m.\u001b[39mscrollHeight))\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                            "column": 16,
+                            "line": 24
+                          },
+                          "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n\n  22 |     \n  23 |     // 地図上の店舗マーカーをクリック（Mapboxマーカーは特殊な要素）\n> 24 |     await page.click('.mapboxgl-marker:first-child')\n     |                ^\n  25 |     \n  26 |     // 4. ページの下部にスクロールして価格投稿セクションを表示\n  27 |     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:24:16"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-06T12:21:45.180Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-webkit\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-webkit\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-webkit\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                        "column": 16,
+                        "line": 24
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "f04d8cd821ff75af7f70-eb6108ae5868d3f0accf",
+              "file": "price-submission.spec.ts",
+              "line": 12,
+              "column": 3
+            },
+            {
+              "title": "should show validation errors for invalid input",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 7,
+                      "status": "failed",
+                      "duration": 22959,
+                      "error": {
+                        "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n",
+                        "stack": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:55:16",
+                        "location": {
+                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                          "column": 16,
+                          "line": 55
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 53 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.mapboxgl-canvas'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m })\n \u001b[90m 54 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m5000\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 55 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'.mapboxgl-marker:first-child'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 56 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m window\u001b[33m.\u001b[39mscrollTo(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m document\u001b[33m.\u001b[39mbody\u001b[33m.\u001b[39mscrollHeight))\n \u001b[90m 57 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button:has-text(\"価格を投稿する\")'\u001b[39m)\n \u001b[90m 58 |\u001b[39m     \u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                            "column": 16,
+                            "line": 55
+                          },
+                          "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n\n  53 |     await page.waitForSelector('.mapboxgl-canvas', { timeout: 15000 })\n  54 |     await page.waitForTimeout(5000)\n> 55 |     await page.click('.mapboxgl-marker:first-child')\n     |                ^\n  56 |     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))\n  57 |     await page.click('button:has-text(\"価格を投稿する\")')\n  58 |     \n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:55:16"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-06T12:21:45.163Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-webkit\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-webkit\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-webkit\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                        "column": 16,
+                        "line": 55
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "f04d8cd821ff75af7f70-0bd88df5c36e7578774e",
+              "file": "price-submission.spec.ts",
+              "line": 51,
+              "column": 3
+            },
+            {
+              "title": "should handle network errors gracefully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 8,
+                      "status": "failed",
+                      "duration": 22395,
+                      "error": {
+                        "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n",
+                        "stack": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:75:16",
+                        "location": {
+                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                          "column": 16,
+                          "line": 75
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 73 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.mapboxgl-canvas'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m })\n \u001b[90m 74 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m5000\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 75 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'.mapboxgl-marker:first-child'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 76 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m window\u001b[33m.\u001b[39mscrollTo(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m document\u001b[33m.\u001b[39mbody\u001b[33m.\u001b[39mscrollHeight))\n \u001b[90m 77 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button:has-text(\"価格を投稿する\")'\u001b[39m)\n \u001b[90m 78 |\u001b[39m     \u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                            "column": 16,
+                            "line": 75
+                          },
+                          "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n\n  73 |     await page.waitForSelector('.mapboxgl-canvas', { timeout: 15000 })\n  74 |     await page.waitForTimeout(5000)\n> 75 |     await page.click('.mapboxgl-marker:first-child')\n     |                ^\n  76 |     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))\n  77 |     await page.click('button:has-text(\"価格を投稿する\")')\n  78 |     \n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:75:16"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-06T12:21:45.162Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-webkit\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-webkit\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-webkit\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                        "column": 16,
+                        "line": 75
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "f04d8cd821ff75af7f70-c299e3fe643e9e3d430f",
+              "file": "price-submission.spec.ts",
+              "line": 66,
+              "column": 3
+            },
+            {
+              "title": "user can submit a price successfully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 9,
+                      "status": "failed",
+                      "duration": 21806,
+                      "error": {
+                        "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n",
+                        "stack": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:24:16",
+                        "location": {
+                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                          "column": 16,
+                          "line": 24
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 22 |\u001b[39m     \n \u001b[90m 23 |\u001b[39m     \u001b[90m// 地図上の店舗マーカーをクリック（Mapboxマーカーは特殊な要素）\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 24 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'.mapboxgl-marker:first-child'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 25 |\u001b[39m     \n \u001b[90m 26 |\u001b[39m     \u001b[90m// 4. ページの下部にスクロールして価格投稿セクションを表示\u001b[39m\n \u001b[90m 27 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m window\u001b[33m.\u001b[39mscrollTo(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m document\u001b[33m.\u001b[39mbody\u001b[33m.\u001b[39mscrollHeight))\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                            "column": 16,
+                            "line": 24
+                          },
+                          "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n\n  22 |     \n  23 |     // 地図上の店舗マーカーをクリック（Mapboxマーカーは特殊な要素）\n> 24 |     await page.click('.mapboxgl-marker:first-child')\n     |                ^\n  25 |     \n  26 |     // 4. ページの下部にスクロールして価格投稿セクションを表示\n  27 |     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:24:16"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-06T12:21:45.148Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-Mobile-Chrome\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-Mobile-Chrome\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-Mobile-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                        "column": 16,
+                        "line": 24
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "f04d8cd821ff75af7f70-0e7c8a3a825f5e85676e",
+              "file": "price-submission.spec.ts",
+              "line": 12,
+              "column": 3
+            },
+            {
+              "title": "should show validation errors for invalid input",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 10,
+                      "status": "failed",
+                      "duration": 22188,
+                      "error": {
+                        "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n",
+                        "stack": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:55:16",
+                        "location": {
+                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                          "column": 16,
+                          "line": 55
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 53 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.mapboxgl-canvas'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m })\n \u001b[90m 54 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m5000\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 55 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'.mapboxgl-marker:first-child'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 56 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m window\u001b[33m.\u001b[39mscrollTo(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m document\u001b[33m.\u001b[39mbody\u001b[33m.\u001b[39mscrollHeight))\n \u001b[90m 57 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button:has-text(\"価格を投稿する\")'\u001b[39m)\n \u001b[90m 58 |\u001b[39m     \u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                            "column": 16,
+                            "line": 55
+                          },
+                          "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n\n  53 |     await page.waitForSelector('.mapboxgl-canvas', { timeout: 15000 })\n  54 |     await page.waitForTimeout(5000)\n> 55 |     await page.click('.mapboxgl-marker:first-child')\n     |                ^\n  56 |     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))\n  57 |     await page.click('button:has-text(\"価格を投稿する\")')\n  58 |     \n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:55:16"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-06T12:21:45.180Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-Mobile-Chrome\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-Mobile-Chrome\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-Mobile-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                        "column": 16,
+                        "line": 55
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "f04d8cd821ff75af7f70-54940062f67f9ab6a9b6",
+              "file": "price-submission.spec.ts",
+              "line": 51,
+              "column": 3
+            },
+            {
+              "title": "should handle network errors gracefully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 11,
+                      "status": "failed",
+                      "duration": 22349,
+                      "error": {
+                        "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n",
+                        "stack": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:75:16",
+                        "location": {
+                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                          "column": 16,
+                          "line": 75
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 73 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.mapboxgl-canvas'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m })\n \u001b[90m 74 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m5000\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 75 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'.mapboxgl-marker:first-child'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 76 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m window\u001b[33m.\u001b[39mscrollTo(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m document\u001b[33m.\u001b[39mbody\u001b[33m.\u001b[39mscrollHeight))\n \u001b[90m 77 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button:has-text(\"価格を投稿する\")'\u001b[39m)\n \u001b[90m 78 |\u001b[39m     \u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                            "column": 16,
+                            "line": 75
+                          },
+                          "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n\n  73 |     await page.waitForSelector('.mapboxgl-canvas', { timeout: 15000 })\n  74 |     await page.waitForTimeout(5000)\n> 75 |     await page.click('.mapboxgl-marker:first-child')\n     |                ^\n  76 |     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))\n  77 |     await page.click('button:has-text(\"価格を投稿する\")')\n  78 |     \n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:75:16"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-06T12:21:45.162Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-Mobile-Chrome\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-Mobile-Chrome\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-Mobile-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                        "column": 16,
+                        "line": 75
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "f04d8cd821ff75af7f70-90d6306f28463cb78290",
+              "file": "price-submission.spec.ts",
+              "line": 66,
+              "column": 3
+            },
+            {
+              "title": "user can submit a price successfully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 9,
+                      "status": "failed",
+                      "duration": 21220,
+                      "error": {
+                        "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n",
+                        "stack": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:24:16",
+                        "location": {
+                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                          "column": 16,
+                          "line": 24
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 22 |\u001b[39m     \n \u001b[90m 23 |\u001b[39m     \u001b[90m// 地図上の店舗マーカーをクリック（Mapboxマーカーは特殊な要素）\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 24 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'.mapboxgl-marker:first-child'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 25 |\u001b[39m     \n \u001b[90m 26 |\u001b[39m     \u001b[90m// 4. ページの下部にスクロールして価格投稿セクションを表示\u001b[39m\n \u001b[90m 27 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m window\u001b[33m.\u001b[39mscrollTo(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m document\u001b[33m.\u001b[39mbody\u001b[33m.\u001b[39mscrollHeight))\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                            "column": 16,
+                            "line": 24
+                          },
+                          "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n\n  22 |     \n  23 |     // 地図上の店舗マーカーをクリック（Mapboxマーカーは特殊な要素）\n> 24 |     await page.click('.mapboxgl-marker:first-child')\n     |                ^\n  25 |     \n  26 |     // 4. ページの下部にスクロールして価格投稿セクションを表示\n  27 |     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:24:16"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-06T12:22:07.887Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-Mobile-Safari\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-Mobile-Safari\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-Mobile-Safari\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                        "column": 16,
+                        "line": 24
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "f04d8cd821ff75af7f70-f81954bfb904804a65fe",
+              "file": "price-submission.spec.ts",
+              "line": 12,
+              "column": 3
+            },
+            {
+              "title": "should show validation errors for invalid input",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 21202,
+                      "error": {
+                        "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n",
+                        "stack": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:55:16",
+                        "location": {
+                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                          "column": 16,
+                          "line": 55
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 53 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.mapboxgl-canvas'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m })\n \u001b[90m 54 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m5000\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 55 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'.mapboxgl-marker:first-child'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 56 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m window\u001b[33m.\u001b[39mscrollTo(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m document\u001b[33m.\u001b[39mbody\u001b[33m.\u001b[39mscrollHeight))\n \u001b[90m 57 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button:has-text(\"価格を投稿する\")'\u001b[39m)\n \u001b[90m 58 |\u001b[39m     \u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                            "column": 16,
+                            "line": 55
+                          },
+                          "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n\n  53 |     await page.waitForSelector('.mapboxgl-canvas', { timeout: 15000 })\n  54 |     await page.waitForTimeout(5000)\n> 55 |     await page.click('.mapboxgl-marker:first-child')\n     |                ^\n  56 |     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))\n  57 |     await page.click('button:has-text(\"価格を投稿する\")')\n  58 |     \n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:55:16"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-06T12:22:08.113Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-Mobile-Safari\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-Mobile-Safari\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-Mobile-Safari\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                        "column": 16,
+                        "line": 55
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "f04d8cd821ff75af7f70-f9e8ce6fce28045eccfe",
+              "file": "price-submission.spec.ts",
+              "line": 51,
+              "column": 3
+            },
+            {
+              "title": "should handle network errors gracefully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 10,
+                      "status": "failed",
+                      "duration": 20864,
+                      "error": {
+                        "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n",
+                        "stack": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:75:16",
+                        "location": {
+                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                          "column": 16,
+                          "line": 75
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 73 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.mapboxgl-canvas'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m })\n \u001b[90m 74 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m5000\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 75 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'.mapboxgl-marker:first-child'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 76 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m window\u001b[33m.\u001b[39mscrollTo(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m document\u001b[33m.\u001b[39mbody\u001b[33m.\u001b[39mscrollHeight))\n \u001b[90m 77 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button:has-text(\"価格を投稿する\")'\u001b[39m)\n \u001b[90m 78 |\u001b[39m     \u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                            "column": 16,
+                            "line": 75
+                          },
+                          "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n\n  73 |     await page.waitForSelector('.mapboxgl-canvas', { timeout: 15000 })\n  74 |     await page.waitForTimeout(5000)\n> 75 |     await page.click('.mapboxgl-marker:first-child')\n     |                ^\n  76 |     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))\n  77 |     await page.click('button:has-text(\"価格を投稿する\")')\n  78 |     \n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:75:16"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-06T12:22:08.221Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-Mobile-Safari\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-Mobile-Safari\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-Mobile-Safari\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
+                        "column": 16,
+                        "line": 75
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "f04d8cd821ff75af7f70-f59a499a37afd6dd079c",
+              "file": "price-submission.spec.ts",
+              "line": 66,
+              "column": 3
             }
           ]
         }
@@ -224,11 +1260,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-08-05T23:54:13.971Z",
-    "duration": 23201.974,
+    "startTime": "2025-08-06T12:21:22.460Z",
+    "duration": 67084.41100000001,
     "expected": 0,
     "skipped": 0,
-    "unexpected": 1,
+    "unexpected": 15,
     "flaky": 0
   }
 }
