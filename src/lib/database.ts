@@ -213,17 +213,52 @@ export class DatabaseService {
 
   // 商品検索（価格情報付き）
   static async searchProductsWithPrices(query: string, limit = 10): Promise<any[]> {
-    const { data, error } = await supabase
-      .rpc('search_products_with_prices', {
-        search_query: query,
-        limit_count: limit
-      })
-    
-    if (error) {
+    try {
+      // まず商品を検索
+      const { data: products, error: productsError } = await supabase
+        .from('products')
+        .select('*')
+        .ilike('name', `%${query}%`)
+        .limit(limit)
+      
+      if (productsError) {
+        console.error('Error searching products:', productsError)
+        return []
+      }
+      
+      if (!products || products.length === 0) {
+        return []
+      }
+      
+      // 各商品の価格統計を取得
+      const productsWithPrices = await Promise.all(
+        products.map(async (product) => {
+          const { data: prices, error: pricesError } = await supabase
+            .from('latest_prices')
+            .select('price')
+            .eq('product_id', product.id)
+          
+          if (pricesError || !prices || prices.length === 0) {
+            return {
+              ...product,
+              min_price: null,
+              max_price: null
+            }
+          }
+          
+          const priceValues = prices.map(p => p.price)
+          return {
+            ...product,
+            min_price: Math.min(...priceValues),
+            max_price: Math.max(...priceValues)
+          }
+        })
+      )
+      
+      return productsWithPrices
+    } catch (error) {
       console.error('Error searching products with prices:', error)
       return []
     }
-    
-    return data || []
   }
 }
