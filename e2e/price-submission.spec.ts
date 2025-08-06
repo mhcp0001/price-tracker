@@ -6,6 +6,66 @@ test.describe('Price Submission Flow', () => {
     await context.grantPermissions(['geolocation'])
     await context.setGeolocation({ latitude: 35.6762, longitude: 139.6503 })
     
+    // Supabase APIをモック（既存のhandlers.tsのデータを活用）
+    await page.route('**/rest/v1/rpc/get_nearby_stores', async route => {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify([
+          {
+            id: '1',
+            name: 'テストスーパーA',
+            distance_meters: 500,
+            location_lat: 35.6762,
+            location_lng: 139.6503,
+            address: '東京都渋谷区テスト1-1-1'
+          },
+          {
+            id: '2', 
+            name: 'テストスーパーB',
+            distance_meters: 800,
+            location_lat: 35.6800,
+            location_lng: 139.6550,
+            address: '東京都新宿区テスト2-2-2'
+          }
+        ])
+      })
+    })
+    
+    // 価格投稿APIをモック
+    await page.route('**/rest/v1/prices', async route => {
+      if (route.request().method() === 'POST') {
+        const body = await route.request().postDataJSON()
+        await route.fulfill({
+          status: 201,
+          contentType: 'application/json',
+          body: JSON.stringify({
+            id: 'new-price-id',
+            ...body,
+            submitted_at: new Date().toISOString(),
+            is_verified: false
+          })
+        })
+      }
+    })
+    
+    // 商品検索APIをモック  
+    await page.route('**/rest/v1/rpc/search_products_with_prices', async route => {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify([
+          {
+            id: '1',
+            name: 'トマト',
+            min_price: 298,
+            max_price: 350,
+            store_count: 2
+          }
+        ])
+      })
+    })
+    
     await page.goto('/')
     
     // Mapbox tokenが設定されていない場合のチェック
@@ -25,53 +85,48 @@ test.describe('Price Submission Flow', () => {
     // 3. 地図エリアが表示されるまで待機（MapboxのCanvasElementを待機）
     await page.waitForSelector('.mapboxgl-canvas', { timeout: 20000 })
     
-    // 店舗選択の実装（Mapboxマーカーまたは店舗リスト）
+    // 店舗選択：テストスーパーAを選択（より確実な方法）
     let storeSelected = false
     
-    // まずMapboxマーカーでの選択を試行
+    // 店舗一覧が表示されるまで待機
+    await page.waitForTimeout(2000)
+    
+    // まず店舗名での直接選択を試行
     try {
-      await page.waitForFunction(() => {
-        const markers = document.querySelectorAll('.mapboxgl-marker')
-        return markers.length > 0
-      }, { timeout: 15000 })
-      
-      // 地図上の店舗マーカーをクリック
-      const storeMarkers = await page.$$('.mapboxgl-marker')
-      if (storeMarkers.length > 1) {
-        // 最初のマーカーは現在地（赤色）、2番目以降が店舗マーカー（青色）
-        await storeMarkers[1].click()
-        // マーカークリック後、selectedStoreが設定されるまで待機
-        await page.waitForTimeout(1000)
-      } else if (storeMarkers.length === 1) {
-        // フォールバック: 最初のマーカーをクリック
-        await storeMarkers[0].click()
-        await page.waitForTimeout(1000)
-      }
+      const storeButton = page.locator('h3:has-text("テストスーパーA")').first()
+      await storeButton.waitFor({ timeout: 10000 })
+      await storeButton.click()
+      await page.waitForTimeout(1500)
       storeSelected = true
     } catch (error) {
-      console.warn('Mapbox markers not available, will try store list')
-    }
-    
-    // Mapbox選択が失敗した場合は店舗リストから選択
-    if (!storeSelected) {
-      await page.waitForSelector('.space-y-3', { timeout: 10000 })
-      const storeListItems = await page.$$('.space-y-3 > .p-4')
-      if (storeListItems.length > 0) {
-        await storeListItems[0].click()
-        await page.waitForTimeout(1000)
-        storeSelected = true
-      } else {
-        throw new Error('No stores available for selection')
+      console.warn('Direct store selection failed, trying markers')
+      
+      // フォールバック: Mapboxマーカーでの選択
+      try {
+        await page.waitForFunction(() => {
+          const markers = document.querySelectorAll('.mapboxgl-marker')
+          return markers.length > 0
+        }, { timeout: 10000 })
+        
+        const storeMarkers = await page.$$('.mapboxgl-marker')
+        if (storeMarkers.length > 0) {
+          // 店舗マーカーをクリック（最初のものが現在地の場合は2番目を使用）
+          const targetMarker = storeMarkers.length > 1 ? storeMarkers[1] : storeMarkers[0]
+          await targetMarker.click()
+          await page.waitForTimeout(1500)
+          storeSelected = true
+        }
+      } catch (markerError) {
+        console.warn('Marker selection also failed')
       }
     }
     
-    // 店舗選択が完了していることを確認（選択中テキストまたは店舗名で確認）
-    try {
-      await expect(page.locator('text=選択中:')).toBeVisible({ timeout: 3000 })
-    } catch {
-      // フォールバック: 店舗名が表示されているかチェック
-      await expect(page.locator('text=テストスーパーA')).toBeVisible({ timeout: 2000 })
+    if (!storeSelected) {
+      throw new Error('Failed to select store through any method')
     }
+    
+    // 店舗選択が完了していることを確認
+    await expect(page.locator('text=選択中: テストスーパーA')).toBeVisible({ timeout: 5000 })
     
     // 4. ページの下部にスクロールして価格投稿セクションを表示
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
@@ -85,13 +140,13 @@ test.describe('Price Submission Flow', () => {
     await expect(page.locator('.fixed').filter({ hasText: '価格を投稿' })).toBeVisible()
     
     // 7. 商品名を入力
-    await page.fill('input[placeholder*="商品名"]', 'トマト')
+    await page.fill('input#product-name', 'トマト')
     
     // 8. 価格を入力
-    await page.fill('input[placeholder*="価格"]', '298')
+    await page.fill('input#price', '298')
     
-    // 9. 投稿ボタンをクリック
-    await page.click('button:has-text("投稿")')
+    // 9. 投稿ボタンをクリック（フォーム内のsubmitボタンを特定）
+    await page.locator('button[type="submit"]:has-text("投稿する")').click({ force: true })
     
     // 10. 成功した場合はモーダルが閉じることを確認
     // または適切な成功メッセージが表示されることを確認
@@ -102,43 +157,48 @@ test.describe('Price Submission Flow', () => {
     // 店舗を選択してフォームを開く
     await page.waitForSelector('.mapboxgl-canvas', { timeout: 20000 })
     
-    // 店舗選択（統一されたロジック）
+    // 店舗選択：テストスーパーAを選択（統一されたロジック）
     let storeSelected = false
+    await page.waitForTimeout(2000)
     
     try {
-      await page.waitForFunction(() => {
-        const markers = document.querySelectorAll('.mapboxgl-marker')
-        return markers.length > 0
-      }, { timeout: 15000 })
-      
-      const storeMarkers = await page.$$('.mapboxgl-marker')
-      const targetMarker = storeMarkers.length > 1 ? storeMarkers[1] : storeMarkers[0]
-      await targetMarker.click()
-      await page.waitForTimeout(1000)
+      const storeButton = page.locator('h3:has-text("テストスーパーA")').first()
+      await storeButton.waitFor({ timeout: 10000 })
+      await storeButton.click()
+      await page.waitForTimeout(1500)
       storeSelected = true
     } catch (error) {
-      console.warn('Mapbox markers not available, using store list')
-    }
-    
-    if (!storeSelected) {
-      const storeListItems = await page.$$('.space-y-3 > .p-4')
-      if (storeListItems.length > 0) {
-        await storeListItems[0].click()
-        await page.waitForTimeout(1000)
+      console.warn('Direct store selection failed, trying markers')
+      
+      try {
+        await page.waitForFunction(() => {
+          const markers = document.querySelectorAll('.mapboxgl-marker')
+          return markers.length > 0
+        }, { timeout: 10000 })
+        
+        const storeMarkers = await page.$$('.mapboxgl-marker')
+        if (storeMarkers.length > 0) {
+          const targetMarker = storeMarkers.length > 1 ? storeMarkers[1] : storeMarkers[0]
+          await targetMarker.click()
+          await page.waitForTimeout(1500)
+          storeSelected = true
+        }
+      } catch (markerError) {
+        console.warn('Store selection failed')
       }
     }
     
-    // 店舗選択確認
-    try {
-      await expect(page.locator('text=選択中:')).toBeVisible({ timeout: 3000 })
-    } catch {
-      await expect(page.locator('text=テストスーパーA')).toBeVisible({ timeout: 2000 })
+    if (!storeSelected) {
+      throw new Error('Failed to select store through any method')
     }
+    
+    // 店舗選択確認
+    await expect(page.locator('text=選択中: テストスーパーA')).toBeVisible({ timeout: 5000 })
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
     await page.click('button:has-text("価格を投稿する")')
     
     // 空のフィールドで投稿を試行
-    await page.click('button:has-text("投稿")')
+    await page.locator('button[type="submit"]:has-text("投稿する")').click({ force: true })
     
     // バリデーションメッセージが表示されることを確認（実際の実装に応じて調整）
     await page.waitForTimeout(1000)
@@ -153,45 +213,50 @@ test.describe('Price Submission Flow', () => {
     // 店舗を選択してフォームを開く
     await page.waitForSelector('.mapboxgl-canvas', { timeout: 20000 })
     
-    // 店舗選択（統一されたロジック）
+    // 店舗選択：テストスーパーAを選択（統一されたロジック）
     let storeSelected = false
+    await page.waitForTimeout(2000)
     
     try {
-      await page.waitForFunction(() => {
-        const markers = document.querySelectorAll('.mapboxgl-marker')
-        return markers.length > 0
-      }, { timeout: 15000 })
-      
-      const storeMarkers = await page.$$('.mapboxgl-marker')
-      const targetMarker = storeMarkers.length > 1 ? storeMarkers[1] : storeMarkers[0]
-      await targetMarker.click()
-      await page.waitForTimeout(1000)
+      const storeButton = page.locator('h3:has-text("テストスーパーA")').first()
+      await storeButton.waitFor({ timeout: 10000 })
+      await storeButton.click()
+      await page.waitForTimeout(1500)
       storeSelected = true
     } catch (error) {
-      console.warn('Mapbox markers not available, using store list')
-    }
-    
-    if (!storeSelected) {
-      const storeListItems = await page.$$('.space-y-3 > .p-4')
-      if (storeListItems.length > 0) {
-        await storeListItems[0].click()
-        await page.waitForTimeout(1000)
+      console.warn('Direct store selection failed, trying markers')
+      
+      try {
+        await page.waitForFunction(() => {
+          const markers = document.querySelectorAll('.mapboxgl-marker')
+          return markers.length > 0
+        }, { timeout: 10000 })
+        
+        const storeMarkers = await page.$$('.mapboxgl-marker')
+        if (storeMarkers.length > 0) {
+          const targetMarker = storeMarkers.length > 1 ? storeMarkers[1] : storeMarkers[0]
+          await targetMarker.click()
+          await page.waitForTimeout(1500)
+          storeSelected = true
+        }
+      } catch (markerError) {
+        console.warn('Store selection failed')
       }
     }
     
-    // 店舗選択確認
-    try {
-      await expect(page.locator('text=選択中:')).toBeVisible({ timeout: 3000 })
-    } catch {
-      await expect(page.locator('text=テストスーパーA')).toBeVisible({ timeout: 2000 })
+    if (!storeSelected) {
+      throw new Error('Failed to select store through any method')
     }
+    
+    // 店舗選択確認
+    await expect(page.locator('text=選択中: テストスーパーA')).toBeVisible({ timeout: 5000 })
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
     await page.click('button:has-text("価格を投稿する")')
     
     // フォームに入力
-    await page.fill('input[placeholder*="商品名"]', 'トマト')
-    await page.fill('input[placeholder*="価格"]', '298')
-    await page.click('button:has-text("投稿")')
+    await page.fill('input#product-name', 'トマト')
+    await page.fill('input#price', '298')
+    await page.locator('button[type="submit"]:has-text("投稿する")').click({ force: true })
     
     // エラー処理を確認（実際の実装に応じて調整）
     await page.waitForTimeout(2000)
