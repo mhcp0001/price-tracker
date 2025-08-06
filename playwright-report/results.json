@@ -11,7 +11,7 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
-      "actualWorkers": 12
+      "actualWorkers": 1
     },
     "preserveOutput": "always",
     "reporter": [
@@ -41,7 +41,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 12
+          "actualWorkers": 1
         },
         "id": "chromium",
         "name": "chromium",
@@ -57,7 +57,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 12
+          "actualWorkers": 1
         },
         "id": "firefox",
         "name": "firefox",
@@ -73,7 +73,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 12
+          "actualWorkers": 1
         },
         "id": "webkit",
         "name": "webkit",
@@ -89,7 +89,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 12
+          "actualWorkers": 1
         },
         "id": "Mobile Chrome",
         "name": "Mobile Chrome",
@@ -105,7 +105,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 12
+          "actualWorkers": 1
         },
         "id": "Mobile Safari",
         "name": "Mobile Safari",
@@ -159,31 +159,31 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 471,
+                      "duration": 20815,
                       "error": {
-                        "message": "TypeError: page.setGeolocation is not a function",
-                        "stack": "TypeError: page.setGeolocation is not a function\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16",
+                        "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n",
+                        "stack": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:24:16",
                         "location": {
                           "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
                           "column": 16,
-                          "line": 7
+                          "line": 24
                         },
-                        "snippet": "\u001b[0m \u001b[90m  5 |\u001b[39m     \u001b[90m// 位置情報の許可をモック\u001b[39m\n \u001b[90m  6 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mcontext()\u001b[33m.\u001b[39mgrantPermissions([\u001b[32m'geolocation'\u001b[39m])\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetGeolocation({ latitude\u001b[33m:\u001b[39m \u001b[35m35.6762\u001b[39m\u001b[33m,\u001b[39m longitude\u001b[33m:\u001b[39m \u001b[35m139.6503\u001b[39m })\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m     \n \u001b[90m  9 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m 10 |\u001b[39m   })\u001b[0m"
+                        "snippet": "\u001b[0m \u001b[90m 22 |\u001b[39m     \n \u001b[90m 23 |\u001b[39m     \u001b[90m// 地図上の店舗マーカーをクリック（Mapboxマーカーは特殊な要素）\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 24 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'.mapboxgl-marker:first-child'\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 25 |\u001b[39m     \n \u001b[90m 26 |\u001b[39m     \u001b[90m// 4. ページの下部にスクロールして価格投稿セクションを表示\u001b[39m\n \u001b[90m 27 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m window\u001b[33m.\u001b[39mscrollTo(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m document\u001b[33m.\u001b[39mbody\u001b[33m.\u001b[39mscrollHeight))\u001b[0m"
                       },
                       "errors": [
                         {
                           "location": {
                             "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
                             "column": 16,
-                            "line": 7
+                            "line": 24
                           },
-                          "message": "TypeError: page.setGeolocation is not a function\n\n   5 |     // 位置情報の許可をモック\n   6 |     await page.context().grantPermissions(['geolocation'])\n>  7 |     await page.setGeolocation({ latitude: 35.6762, longitude: 139.6503 })\n     |                ^\n   8 |     \n   9 |     await page.goto('/')\n  10 |   })\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16"
+                          "message": "TimeoutError: page.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mapboxgl-marker:first-child')\u001b[22m\n\n\n  22 |     \n  23 |     // 地図上の店舗マーカーをクリック（Mapboxマーカーは特殊な要素）\n> 24 |     await page.click('.mapboxgl-marker:first-child')\n     |                ^\n  25 |     \n  26 |     // 4. ページの下部にスクロールして価格投稿セクションを表示\n  27 |     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:24:16"
                         }
                       ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-08-05T23:25:36.536Z",
+                      "startTime": "2025-08-05T23:54:15.961Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -195,12 +195,17 @@
                           "name": "video",
                           "contentType": "video/webm",
                           "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-chromium\\error-context.md"
                         }
                       ],
                       "errorLocation": {
                         "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
                         "column": 16,
-                        "line": 7
+                        "line": 24
                       }
                     }
                   ],
@@ -211,972 +216,6 @@
               "file": "price-submission.spec.ts",
               "line": 12,
               "column": 3
-            },
-            {
-              "title": "should show validation errors for invalid input",
-              "ok": false,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": 1,
-                      "parallelIndex": 1,
-                      "status": "failed",
-                      "duration": 369,
-                      "error": {
-                        "message": "TypeError: page.setGeolocation is not a function",
-                        "stack": "TypeError: page.setGeolocation is not a function\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16",
-                        "location": {
-                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                          "column": 16,
-                          "line": 7
-                        },
-                        "snippet": "\u001b[0m \u001b[90m  5 |\u001b[39m     \u001b[90m// 位置情報の許可をモック\u001b[39m\n \u001b[90m  6 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mcontext()\u001b[33m.\u001b[39mgrantPermissions([\u001b[32m'geolocation'\u001b[39m])\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetGeolocation({ latitude\u001b[33m:\u001b[39m \u001b[35m35.6762\u001b[39m\u001b[33m,\u001b[39m longitude\u001b[33m:\u001b[39m \u001b[35m139.6503\u001b[39m })\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m     \n \u001b[90m  9 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m 10 |\u001b[39m   })\u001b[0m"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                            "column": 16,
-                            "line": 7
-                          },
-                          "message": "TypeError: page.setGeolocation is not a function\n\n   5 |     // 位置情報の許可をモック\n   6 |     await page.context().grantPermissions(['geolocation'])\n>  7 |     await page.setGeolocation({ latitude: 35.6762, longitude: 139.6503 })\n     |                ^\n   8 |     \n   9 |     await page.goto('/')\n  10 |   })\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16"
-                        }
-                      ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-08-05T23:25:36.549Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-chromium\\test-failed-1.png"
-                        },
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-chromium\\video.webm"
-                        }
-                      ],
-                      "errorLocation": {
-                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                        "column": 16,
-                        "line": 7
-                      }
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "f04d8cd821ff75af7f70-a524b77d3dc465c469ca",
-              "file": "price-submission.spec.ts",
-              "line": 55,
-              "column": 3
-            },
-            {
-              "title": "should handle network errors gracefully",
-              "ok": false,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": 2,
-                      "parallelIndex": 2,
-                      "status": "failed",
-                      "duration": 422,
-                      "error": {
-                        "message": "TypeError: page.setGeolocation is not a function",
-                        "stack": "TypeError: page.setGeolocation is not a function\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16",
-                        "location": {
-                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                          "column": 16,
-                          "line": 7
-                        },
-                        "snippet": "\u001b[0m \u001b[90m  5 |\u001b[39m     \u001b[90m// 位置情報の許可をモック\u001b[39m\n \u001b[90m  6 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mcontext()\u001b[33m.\u001b[39mgrantPermissions([\u001b[32m'geolocation'\u001b[39m])\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetGeolocation({ latitude\u001b[33m:\u001b[39m \u001b[35m35.6762\u001b[39m\u001b[33m,\u001b[39m longitude\u001b[33m:\u001b[39m \u001b[35m139.6503\u001b[39m })\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m     \n \u001b[90m  9 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m 10 |\u001b[39m   })\u001b[0m"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                            "column": 16,
-                            "line": 7
-                          },
-                          "message": "TypeError: page.setGeolocation is not a function\n\n   5 |     // 位置情報の許可をモック\n   6 |     await page.context().grantPermissions(['geolocation'])\n>  7 |     await page.setGeolocation({ latitude: 35.6762, longitude: 139.6503 })\n     |                ^\n   8 |     \n   9 |     await page.goto('/')\n  10 |   })\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16"
-                        }
-                      ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-08-05T23:25:36.552Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-chromium\\test-failed-1.png"
-                        },
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-chromium\\video.webm"
-                        }
-                      ],
-                      "errorLocation": {
-                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                        "column": 16,
-                        "line": 7
-                      }
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "f04d8cd821ff75af7f70-15aa29292ffb7784a7da",
-              "file": "price-submission.spec.ts",
-              "line": 79,
-              "column": 3
-            },
-            {
-              "title": "user can submit a price successfully",
-              "ok": false,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "firefox",
-                  "projectName": "firefox",
-                  "results": [
-                    {
-                      "workerIndex": 3,
-                      "parallelIndex": 3,
-                      "status": "failed",
-                      "duration": 975,
-                      "error": {
-                        "message": "TypeError: page.setGeolocation is not a function",
-                        "stack": "TypeError: page.setGeolocation is not a function\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16",
-                        "location": {
-                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                          "column": 16,
-                          "line": 7
-                        },
-                        "snippet": "\u001b[0m \u001b[90m  5 |\u001b[39m     \u001b[90m// 位置情報の許可をモック\u001b[39m\n \u001b[90m  6 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mcontext()\u001b[33m.\u001b[39mgrantPermissions([\u001b[32m'geolocation'\u001b[39m])\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetGeolocation({ latitude\u001b[33m:\u001b[39m \u001b[35m35.6762\u001b[39m\u001b[33m,\u001b[39m longitude\u001b[33m:\u001b[39m \u001b[35m139.6503\u001b[39m })\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m     \n \u001b[90m  9 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m 10 |\u001b[39m   })\u001b[0m"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                            "column": 16,
-                            "line": 7
-                          },
-                          "message": "TypeError: page.setGeolocation is not a function\n\n   5 |     // 位置情報の許可をモック\n   6 |     await page.context().grantPermissions(['geolocation'])\n>  7 |     await page.setGeolocation({ latitude: 35.6762, longitude: 139.6503 })\n     |                ^\n   8 |     \n   9 |     await page.goto('/')\n  10 |   })\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16"
-                        }
-                      ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-08-05T23:25:36.552Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-firefox\\test-failed-1.png"
-                        },
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-firefox\\video.webm"
-                        }
-                      ],
-                      "errorLocation": {
-                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                        "column": 16,
-                        "line": 7
-                      }
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "f04d8cd821ff75af7f70-e485518f9d24d6e5025a",
-              "file": "price-submission.spec.ts",
-              "line": 12,
-              "column": 3
-            },
-            {
-              "title": "should show validation errors for invalid input",
-              "ok": false,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "firefox",
-                  "projectName": "firefox",
-                  "results": [
-                    {
-                      "workerIndex": 4,
-                      "parallelIndex": 4,
-                      "status": "failed",
-                      "duration": 688,
-                      "error": {
-                        "message": "TypeError: page.setGeolocation is not a function",
-                        "stack": "TypeError: page.setGeolocation is not a function\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16",
-                        "location": {
-                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                          "column": 16,
-                          "line": 7
-                        },
-                        "snippet": "\u001b[0m \u001b[90m  5 |\u001b[39m     \u001b[90m// 位置情報の許可をモック\u001b[39m\n \u001b[90m  6 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mcontext()\u001b[33m.\u001b[39mgrantPermissions([\u001b[32m'geolocation'\u001b[39m])\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetGeolocation({ latitude\u001b[33m:\u001b[39m \u001b[35m35.6762\u001b[39m\u001b[33m,\u001b[39m longitude\u001b[33m:\u001b[39m \u001b[35m139.6503\u001b[39m })\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m     \n \u001b[90m  9 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m 10 |\u001b[39m   })\u001b[0m"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                            "column": 16,
-                            "line": 7
-                          },
-                          "message": "TypeError: page.setGeolocation is not a function\n\n   5 |     // 位置情報の許可をモック\n   6 |     await page.context().grantPermissions(['geolocation'])\n>  7 |     await page.setGeolocation({ latitude: 35.6762, longitude: 139.6503 })\n     |                ^\n   8 |     \n   9 |     await page.goto('/')\n  10 |   })\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16"
-                        }
-                      ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-08-05T23:25:36.545Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-firefox\\test-failed-1.png"
-                        },
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-firefox\\video.webm"
-                        }
-                      ],
-                      "errorLocation": {
-                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                        "column": 16,
-                        "line": 7
-                      }
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "f04d8cd821ff75af7f70-6f2a244f79df2611a5ef",
-              "file": "price-submission.spec.ts",
-              "line": 55,
-              "column": 3
-            },
-            {
-              "title": "should handle network errors gracefully",
-              "ok": false,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "firefox",
-                  "projectName": "firefox",
-                  "results": [
-                    {
-                      "workerIndex": 5,
-                      "parallelIndex": 5,
-                      "status": "failed",
-                      "duration": 930,
-                      "error": {
-                        "message": "TypeError: page.setGeolocation is not a function",
-                        "stack": "TypeError: page.setGeolocation is not a function\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16",
-                        "location": {
-                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                          "column": 16,
-                          "line": 7
-                        },
-                        "snippet": "\u001b[0m \u001b[90m  5 |\u001b[39m     \u001b[90m// 位置情報の許可をモック\u001b[39m\n \u001b[90m  6 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mcontext()\u001b[33m.\u001b[39mgrantPermissions([\u001b[32m'geolocation'\u001b[39m])\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetGeolocation({ latitude\u001b[33m:\u001b[39m \u001b[35m35.6762\u001b[39m\u001b[33m,\u001b[39m longitude\u001b[33m:\u001b[39m \u001b[35m139.6503\u001b[39m })\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m     \n \u001b[90m  9 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m 10 |\u001b[39m   })\u001b[0m"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                            "column": 16,
-                            "line": 7
-                          },
-                          "message": "TypeError: page.setGeolocation is not a function\n\n   5 |     // 位置情報の許可をモック\n   6 |     await page.context().grantPermissions(['geolocation'])\n>  7 |     await page.setGeolocation({ latitude: 35.6762, longitude: 139.6503 })\n     |                ^\n   8 |     \n   9 |     await page.goto('/')\n  10 |   })\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16"
-                        }
-                      ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-08-05T23:25:36.551Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-firefox\\test-failed-1.png"
-                        },
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-firefox\\video.webm"
-                        }
-                      ],
-                      "errorLocation": {
-                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                        "column": 16,
-                        "line": 7
-                      }
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "f04d8cd821ff75af7f70-668bb59c66ae00922d65",
-              "file": "price-submission.spec.ts",
-              "line": 79,
-              "column": 3
-            },
-            {
-              "title": "user can submit a price successfully",
-              "ok": false,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "webkit",
-                  "projectName": "webkit",
-                  "results": [
-                    {
-                      "workerIndex": 6,
-                      "parallelIndex": 6,
-                      "status": "failed",
-                      "duration": 613,
-                      "error": {
-                        "message": "TypeError: page.setGeolocation is not a function",
-                        "stack": "TypeError: page.setGeolocation is not a function\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16",
-                        "location": {
-                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                          "column": 16,
-                          "line": 7
-                        },
-                        "snippet": "\u001b[0m \u001b[90m  5 |\u001b[39m     \u001b[90m// 位置情報の許可をモック\u001b[39m\n \u001b[90m  6 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mcontext()\u001b[33m.\u001b[39mgrantPermissions([\u001b[32m'geolocation'\u001b[39m])\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetGeolocation({ latitude\u001b[33m:\u001b[39m \u001b[35m35.6762\u001b[39m\u001b[33m,\u001b[39m longitude\u001b[33m:\u001b[39m \u001b[35m139.6503\u001b[39m })\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m     \n \u001b[90m  9 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m 10 |\u001b[39m   })\u001b[0m"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                            "column": 16,
-                            "line": 7
-                          },
-                          "message": "TypeError: page.setGeolocation is not a function\n\n   5 |     // 位置情報の許可をモック\n   6 |     await page.context().grantPermissions(['geolocation'])\n>  7 |     await page.setGeolocation({ latitude: 35.6762, longitude: 139.6503 })\n     |                ^\n   8 |     \n   9 |     await page.goto('/')\n  10 |   })\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16"
-                        }
-                      ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-08-05T23:25:36.551Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-webkit\\test-failed-1.png"
-                        },
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-webkit\\video.webm"
-                        }
-                      ],
-                      "errorLocation": {
-                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                        "column": 16,
-                        "line": 7
-                      }
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "f04d8cd821ff75af7f70-eb6108ae5868d3f0accf",
-              "file": "price-submission.spec.ts",
-              "line": 12,
-              "column": 3
-            },
-            {
-              "title": "should show validation errors for invalid input",
-              "ok": false,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "webkit",
-                  "projectName": "webkit",
-                  "results": [
-                    {
-                      "workerIndex": 7,
-                      "parallelIndex": 7,
-                      "status": "failed",
-                      "duration": 618,
-                      "error": {
-                        "message": "TypeError: page.setGeolocation is not a function",
-                        "stack": "TypeError: page.setGeolocation is not a function\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16",
-                        "location": {
-                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                          "column": 16,
-                          "line": 7
-                        },
-                        "snippet": "\u001b[0m \u001b[90m  5 |\u001b[39m     \u001b[90m// 位置情報の許可をモック\u001b[39m\n \u001b[90m  6 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mcontext()\u001b[33m.\u001b[39mgrantPermissions([\u001b[32m'geolocation'\u001b[39m])\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetGeolocation({ latitude\u001b[33m:\u001b[39m \u001b[35m35.6762\u001b[39m\u001b[33m,\u001b[39m longitude\u001b[33m:\u001b[39m \u001b[35m139.6503\u001b[39m })\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m     \n \u001b[90m  9 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m 10 |\u001b[39m   })\u001b[0m"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                            "column": 16,
-                            "line": 7
-                          },
-                          "message": "TypeError: page.setGeolocation is not a function\n\n   5 |     // 位置情報の許可をモック\n   6 |     await page.context().grantPermissions(['geolocation'])\n>  7 |     await page.setGeolocation({ latitude: 35.6762, longitude: 139.6503 })\n     |                ^\n   8 |     \n   9 |     await page.goto('/')\n  10 |   })\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16"
-                        }
-                      ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-08-05T23:25:36.552Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-webkit\\test-failed-1.png"
-                        },
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-webkit\\video.webm"
-                        }
-                      ],
-                      "errorLocation": {
-                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                        "column": 16,
-                        "line": 7
-                      }
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "f04d8cd821ff75af7f70-0bd88df5c36e7578774e",
-              "file": "price-submission.spec.ts",
-              "line": 55,
-              "column": 3
-            },
-            {
-              "title": "should handle network errors gracefully",
-              "ok": false,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "webkit",
-                  "projectName": "webkit",
-                  "results": [
-                    {
-                      "workerIndex": 8,
-                      "parallelIndex": 8,
-                      "status": "failed",
-                      "duration": 665,
-                      "error": {
-                        "message": "TypeError: page.setGeolocation is not a function",
-                        "stack": "TypeError: page.setGeolocation is not a function\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16",
-                        "location": {
-                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                          "column": 16,
-                          "line": 7
-                        },
-                        "snippet": "\u001b[0m \u001b[90m  5 |\u001b[39m     \u001b[90m// 位置情報の許可をモック\u001b[39m\n \u001b[90m  6 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mcontext()\u001b[33m.\u001b[39mgrantPermissions([\u001b[32m'geolocation'\u001b[39m])\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetGeolocation({ latitude\u001b[33m:\u001b[39m \u001b[35m35.6762\u001b[39m\u001b[33m,\u001b[39m longitude\u001b[33m:\u001b[39m \u001b[35m139.6503\u001b[39m })\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m     \n \u001b[90m  9 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m 10 |\u001b[39m   })\u001b[0m"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                            "column": 16,
-                            "line": 7
-                          },
-                          "message": "TypeError: page.setGeolocation is not a function\n\n   5 |     // 位置情報の許可をモック\n   6 |     await page.context().grantPermissions(['geolocation'])\n>  7 |     await page.setGeolocation({ latitude: 35.6762, longitude: 139.6503 })\n     |                ^\n   8 |     \n   9 |     await page.goto('/')\n  10 |   })\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16"
-                        }
-                      ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-08-05T23:25:36.551Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-webkit\\test-failed-1.png"
-                        },
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-webkit\\video.webm"
-                        }
-                      ],
-                      "errorLocation": {
-                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                        "column": 16,
-                        "line": 7
-                      }
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "f04d8cd821ff75af7f70-c299e3fe643e9e3d430f",
-              "file": "price-submission.spec.ts",
-              "line": 79,
-              "column": 3
-            },
-            {
-              "title": "user can submit a price successfully",
-              "ok": false,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "Mobile Chrome",
-                  "projectName": "Mobile Chrome",
-                  "results": [
-                    {
-                      "workerIndex": 9,
-                      "parallelIndex": 9,
-                      "status": "failed",
-                      "duration": 483,
-                      "error": {
-                        "message": "TypeError: page.setGeolocation is not a function",
-                        "stack": "TypeError: page.setGeolocation is not a function\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16",
-                        "location": {
-                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                          "column": 16,
-                          "line": 7
-                        },
-                        "snippet": "\u001b[0m \u001b[90m  5 |\u001b[39m     \u001b[90m// 位置情報の許可をモック\u001b[39m\n \u001b[90m  6 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mcontext()\u001b[33m.\u001b[39mgrantPermissions([\u001b[32m'geolocation'\u001b[39m])\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetGeolocation({ latitude\u001b[33m:\u001b[39m \u001b[35m35.6762\u001b[39m\u001b[33m,\u001b[39m longitude\u001b[33m:\u001b[39m \u001b[35m139.6503\u001b[39m })\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m     \n \u001b[90m  9 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m 10 |\u001b[39m   })\u001b[0m"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                            "column": 16,
-                            "line": 7
-                          },
-                          "message": "TypeError: page.setGeolocation is not a function\n\n   5 |     // 位置情報の許可をモック\n   6 |     await page.context().grantPermissions(['geolocation'])\n>  7 |     await page.setGeolocation({ latitude: 35.6762, longitude: 139.6503 })\n     |                ^\n   8 |     \n   9 |     await page.goto('/')\n  10 |   })\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16"
-                        }
-                      ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-08-05T23:25:36.550Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-Mobile-Chrome\\test-failed-1.png"
-                        },
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-Mobile-Chrome\\video.webm"
-                        }
-                      ],
-                      "errorLocation": {
-                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                        "column": 16,
-                        "line": 7
-                      }
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "f04d8cd821ff75af7f70-0e7c8a3a825f5e85676e",
-              "file": "price-submission.spec.ts",
-              "line": 12,
-              "column": 3
-            },
-            {
-              "title": "should show validation errors for invalid input",
-              "ok": false,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "Mobile Chrome",
-                  "projectName": "Mobile Chrome",
-                  "results": [
-                    {
-                      "workerIndex": 10,
-                      "parallelIndex": 10,
-                      "status": "failed",
-                      "duration": 488,
-                      "error": {
-                        "message": "TypeError: page.setGeolocation is not a function",
-                        "stack": "TypeError: page.setGeolocation is not a function\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16",
-                        "location": {
-                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                          "column": 16,
-                          "line": 7
-                        },
-                        "snippet": "\u001b[0m \u001b[90m  5 |\u001b[39m     \u001b[90m// 位置情報の許可をモック\u001b[39m\n \u001b[90m  6 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mcontext()\u001b[33m.\u001b[39mgrantPermissions([\u001b[32m'geolocation'\u001b[39m])\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetGeolocation({ latitude\u001b[33m:\u001b[39m \u001b[35m35.6762\u001b[39m\u001b[33m,\u001b[39m longitude\u001b[33m:\u001b[39m \u001b[35m139.6503\u001b[39m })\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m     \n \u001b[90m  9 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m 10 |\u001b[39m   })\u001b[0m"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                            "column": 16,
-                            "line": 7
-                          },
-                          "message": "TypeError: page.setGeolocation is not a function\n\n   5 |     // 位置情報の許可をモック\n   6 |     await page.context().grantPermissions(['geolocation'])\n>  7 |     await page.setGeolocation({ latitude: 35.6762, longitude: 139.6503 })\n     |                ^\n   8 |     \n   9 |     await page.goto('/')\n  10 |   })\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16"
-                        }
-                      ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-08-05T23:25:36.551Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-Mobile-Chrome\\test-failed-1.png"
-                        },
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-Mobile-Chrome\\video.webm"
-                        }
-                      ],
-                      "errorLocation": {
-                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                        "column": 16,
-                        "line": 7
-                      }
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "f04d8cd821ff75af7f70-54940062f67f9ab6a9b6",
-              "file": "price-submission.spec.ts",
-              "line": 55,
-              "column": 3
-            },
-            {
-              "title": "should handle network errors gracefully",
-              "ok": false,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "Mobile Chrome",
-                  "projectName": "Mobile Chrome",
-                  "results": [
-                    {
-                      "workerIndex": 11,
-                      "parallelIndex": 11,
-                      "status": "failed",
-                      "duration": 343,
-                      "error": {
-                        "message": "TypeError: page.setGeolocation is not a function",
-                        "stack": "TypeError: page.setGeolocation is not a function\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16",
-                        "location": {
-                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                          "column": 16,
-                          "line": 7
-                        },
-                        "snippet": "\u001b[0m \u001b[90m  5 |\u001b[39m     \u001b[90m// 位置情報の許可をモック\u001b[39m\n \u001b[90m  6 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mcontext()\u001b[33m.\u001b[39mgrantPermissions([\u001b[32m'geolocation'\u001b[39m])\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetGeolocation({ latitude\u001b[33m:\u001b[39m \u001b[35m35.6762\u001b[39m\u001b[33m,\u001b[39m longitude\u001b[33m:\u001b[39m \u001b[35m139.6503\u001b[39m })\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m     \n \u001b[90m  9 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m 10 |\u001b[39m   })\u001b[0m"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                            "column": 16,
-                            "line": 7
-                          },
-                          "message": "TypeError: page.setGeolocation is not a function\n\n   5 |     // 位置情報の許可をモック\n   6 |     await page.context().grantPermissions(['geolocation'])\n>  7 |     await page.setGeolocation({ latitude: 35.6762, longitude: 139.6503 })\n     |                ^\n   8 |     \n   9 |     await page.goto('/')\n  10 |   })\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16"
-                        }
-                      ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-08-05T23:25:36.536Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-Mobile-Chrome\\test-failed-1.png"
-                        },
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-Mobile-Chrome\\video.webm"
-                        }
-                      ],
-                      "errorLocation": {
-                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                        "column": 16,
-                        "line": 7
-                      }
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "f04d8cd821ff75af7f70-90d6306f28463cb78290",
-              "file": "price-submission.spec.ts",
-              "line": 79,
-              "column": 3
-            },
-            {
-              "title": "user can submit a price successfully",
-              "ok": false,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "Mobile Safari",
-                  "projectName": "Mobile Safari",
-                  "results": [
-                    {
-                      "workerIndex": 12,
-                      "parallelIndex": 11,
-                      "status": "failed",
-                      "duration": 379,
-                      "error": {
-                        "message": "TypeError: page.setGeolocation is not a function",
-                        "stack": "TypeError: page.setGeolocation is not a function\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16",
-                        "location": {
-                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                          "column": 16,
-                          "line": 7
-                        },
-                        "snippet": "\u001b[0m \u001b[90m  5 |\u001b[39m     \u001b[90m// 位置情報の許可をモック\u001b[39m\n \u001b[90m  6 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mcontext()\u001b[33m.\u001b[39mgrantPermissions([\u001b[32m'geolocation'\u001b[39m])\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetGeolocation({ latitude\u001b[33m:\u001b[39m \u001b[35m35.6762\u001b[39m\u001b[33m,\u001b[39m longitude\u001b[33m:\u001b[39m \u001b[35m139.6503\u001b[39m })\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m     \n \u001b[90m  9 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m 10 |\u001b[39m   })\u001b[0m"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                            "column": 16,
-                            "line": 7
-                          },
-                          "message": "TypeError: page.setGeolocation is not a function\n\n   5 |     // 位置情報の許可をモック\n   6 |     await page.context().grantPermissions(['geolocation'])\n>  7 |     await page.setGeolocation({ latitude: 35.6762, longitude: 139.6503 })\n     |                ^\n   8 |     \n   9 |     await page.goto('/')\n  10 |   })\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16"
-                        }
-                      ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-08-05T23:25:37.745Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-Mobile-Safari\\test-failed-1.png"
-                        },
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-6c693-submit-a-price-successfully-Mobile-Safari\\video.webm"
-                        }
-                      ],
-                      "errorLocation": {
-                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                        "column": 16,
-                        "line": 7
-                      }
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "f04d8cd821ff75af7f70-f81954bfb904804a65fe",
-              "file": "price-submission.spec.ts",
-              "line": 12,
-              "column": 3
-            },
-            {
-              "title": "should show validation errors for invalid input",
-              "ok": false,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "Mobile Safari",
-                  "projectName": "Mobile Safari",
-                  "results": [
-                    {
-                      "workerIndex": 14,
-                      "parallelIndex": 0,
-                      "status": "failed",
-                      "duration": 383,
-                      "error": {
-                        "message": "TypeError: page.setGeolocation is not a function",
-                        "stack": "TypeError: page.setGeolocation is not a function\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16",
-                        "location": {
-                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                          "column": 16,
-                          "line": 7
-                        },
-                        "snippet": "\u001b[0m \u001b[90m  5 |\u001b[39m     \u001b[90m// 位置情報の許可をモック\u001b[39m\n \u001b[90m  6 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mcontext()\u001b[33m.\u001b[39mgrantPermissions([\u001b[32m'geolocation'\u001b[39m])\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetGeolocation({ latitude\u001b[33m:\u001b[39m \u001b[35m35.6762\u001b[39m\u001b[33m,\u001b[39m longitude\u001b[33m:\u001b[39m \u001b[35m139.6503\u001b[39m })\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m     \n \u001b[90m  9 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m 10 |\u001b[39m   })\u001b[0m"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                            "column": 16,
-                            "line": 7
-                          },
-                          "message": "TypeError: page.setGeolocation is not a function\n\n   5 |     // 位置情報の許可をモック\n   6 |     await page.context().grantPermissions(['geolocation'])\n>  7 |     await page.setGeolocation({ latitude: 35.6762, longitude: 139.6503 })\n     |                ^\n   8 |     \n   9 |     await page.goto('/')\n  10 |   })\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16"
-                        }
-                      ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-08-05T23:25:37.823Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-Mobile-Safari\\test-failed-1.png"
-                        },
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-11afa-on-errors-for-invalid-input-Mobile-Safari\\video.webm"
-                        }
-                      ],
-                      "errorLocation": {
-                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                        "column": 16,
-                        "line": 7
-                      }
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "f04d8cd821ff75af7f70-f9e8ce6fce28045eccfe",
-              "file": "price-submission.spec.ts",
-              "line": 55,
-              "column": 3
-            },
-            {
-              "title": "should handle network errors gracefully",
-              "ok": false,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "Mobile Safari",
-                  "projectName": "Mobile Safari",
-                  "results": [
-                    {
-                      "workerIndex": 13,
-                      "parallelIndex": 2,
-                      "status": "failed",
-                      "duration": 380,
-                      "error": {
-                        "message": "TypeError: page.setGeolocation is not a function",
-                        "stack": "TypeError: page.setGeolocation is not a function\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16",
-                        "location": {
-                          "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                          "column": 16,
-                          "line": 7
-                        },
-                        "snippet": "\u001b[0m \u001b[90m  5 |\u001b[39m     \u001b[90m// 位置情報の許可をモック\u001b[39m\n \u001b[90m  6 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mcontext()\u001b[33m.\u001b[39mgrantPermissions([\u001b[32m'geolocation'\u001b[39m])\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetGeolocation({ latitude\u001b[33m:\u001b[39m \u001b[35m35.6762\u001b[39m\u001b[33m,\u001b[39m longitude\u001b[33m:\u001b[39m \u001b[35m139.6503\u001b[39m })\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m     \n \u001b[90m  9 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\n \u001b[90m 10 |\u001b[39m   })\u001b[0m"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                            "column": 16,
-                            "line": 7
-                          },
-                          "message": "TypeError: page.setGeolocation is not a function\n\n   5 |     // 位置情報の許可をモック\n   6 |     await page.context().grantPermissions(['geolocation'])\n>  7 |     await page.setGeolocation({ latitude: 35.6762, longitude: 139.6503 })\n     |                ^\n   8 |     \n   9 |     await page.goto('/')\n  10 |   })\n    at E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts:7:16"
-                        }
-                      ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-08-05T23:25:37.823Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-Mobile-Safari\\test-failed-1.png"
-                        },
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "E:\\workspace\\price-tracker\\test-results\\price-submission-Price-Sub-75ad1-e-network-errors-gracefully-Mobile-Safari\\video.webm"
-                        }
-                      ],
-                      "errorLocation": {
-                        "file": "E:\\workspace\\price-tracker\\e2e\\price-submission.spec.ts",
-                        "column": 16,
-                        "line": 7
-                      }
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "f04d8cd821ff75af7f70-f59a499a37afd6dd079c",
-              "file": "price-submission.spec.ts",
-              "line": 79,
-              "column": 3
             }
           ]
         }
@@ -1185,11 +224,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-08-05T23:25:34.001Z",
-    "duration": 5920.735000000001,
+    "startTime": "2025-08-05T23:54:13.971Z",
+    "duration": 23201.974,
     "expected": 0,
     "skipped": 0,
-    "unexpected": 15,
+    "unexpected": 1,
     "flaky": 0
   }
 }

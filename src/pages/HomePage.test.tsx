@@ -47,21 +47,20 @@ describe('HomePage', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     
-    // Geolocation APIをモック
-    const mockGeolocation = {
-      getCurrentPosition: vi.fn((success) => {
-        success({
-          coords: {
-            latitude: 35.6812,
-            longitude: 139.7671,
-          },
-        })
-      }),
+    // 既存のgeolocationをクリアしてから再定義
+    delete (global as any).navigator
+    ;(global as any).navigator = {
+      geolocation: {
+        getCurrentPosition: vi.fn((success) => {
+          success({
+            coords: {
+              latitude: 35.6812,
+              longitude: 139.7671,
+            },
+          })
+        }),
+      },
     }
-    Object.defineProperty(navigator, 'geolocation', {
-      value: mockGeolocation,
-      configurable: true,
-    })
   })
 
   const renderHomePage = () => {
@@ -151,15 +150,13 @@ describe('HomePage', () => {
   })
 
   it('should show error message when location is denied', async () => {
-    const mockGeolocation = {
-      getCurrentPosition: vi.fn((_, error) => {
-        error({ code: 1, message: 'User denied' })
-      }),
+    ;(global as any).navigator = {
+      geolocation: {
+        getCurrentPosition: vi.fn((_, error) => {
+          error({ code: 1, message: 'User denied' })
+        }),
+      },
     }
-    Object.defineProperty(navigator, 'geolocation', {
-      value: mockGeolocation,
-      configurable: true,
-    })
     
     renderHomePage()
     

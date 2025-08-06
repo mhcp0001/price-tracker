@@ -120,7 +120,7 @@ export const StoreMap = ({ stores, center, onStoreSelect }: StoreMapProps) => {
 
   return (
     <div className="relative w-full h-full">
-      <div ref={mapContainer} className="w-full h-full" />
+      <div ref={mapContainer} className="w-full h-full" data-testid="store-map" />
       {!mapboxgl.accessToken && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
           <p className="text-gray-500">Mapbox access tokenが設定されていません</p>
