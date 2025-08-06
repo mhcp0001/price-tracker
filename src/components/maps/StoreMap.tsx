@@ -19,7 +19,13 @@ export const StoreMap = ({ stores, center, onStoreSelect }: StoreMapProps) => {
 
   // マップの初期化
   useEffect(() => {
-    if (!mapContainer.current || !mapboxgl.accessToken) return
+    if (!mapContainer.current || !mapboxgl.accessToken) {
+      console.warn('Mapbox initialization failed:', {
+        container: !!mapContainer.current,
+        token: !!mapboxgl.accessToken
+      })
+      return
+    }
 
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
@@ -77,20 +83,36 @@ export const StoreMap = ({ stores, center, onStoreSelect }: StoreMapProps) => {
     markers.current = []
 
     // 新しいマーカーを追加（現在地マーカーと同じ方法で）
-    stores.forEach(store => {
+    stores.forEach((store, index) => {
       if (!store.location_lat || !store.location_lng) {
         console.log('Skipping store without location:', store.name)
         return
       }
 
       // 店舗マーカーを作成
-      const storeMarker = new mapboxgl.Marker({ color: '#3B82F6' })
+      const storeMarker = new mapboxgl.Marker({ 
+        color: '#3B82F6',
+        // テスト用のdata属性を追加
+        element: undefined // デフォルト要素を使用
+      })
         .setLngLat([store.location_lng, store.location_lat])
         .setPopup(
           new mapboxgl.Popup({ closeOnClick: false })
             .setHTML(`<p><strong>${store.name}</strong></p>`)
         )
         .addTo(map.current!)
+
+      // テスト用のdata属性を追加
+      const markerElement = storeMarker.getElement()
+      markerElement.setAttribute('data-testid', `store-marker-${index}`)
+      markerElement.setAttribute('data-store-id', store.id?.toString() || index.toString())
+      markerElement.setAttribute('data-store-name', store.name)
+
+      // マーカークリック時の処理
+      markerElement.addEventListener('click', () => {
+        console.log('Store marker clicked:', store.name)
+        onStoreSelect?.(store)
+      })
 
       markers.current.push(storeMarker)
     })
@@ -115,10 +137,13 @@ export const StoreMap = ({ stores, center, onStoreSelect }: StoreMapProps) => {
 
   return (
     <div className="relative w-full h-full">
-      <div ref={mapContainer} className="w-full h-full" />
+      <div ref={mapContainer} className="w-full h-full" data-testid="store-map" />
       {!mapboxgl.accessToken && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
-          <p className="text-gray-500">Mapbox access tokenが設定されていません</p>
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-100" data-testid="mapbox-error">
+          <div className="text-center p-4">
+            <p className="text-gray-500 mb-2">Mapbox access tokenが設定されていません</p>
+            <p className="text-sm text-gray-400">地図機能を使用するには.envファイルでVITE_MAPBOX_ACCESS_TOKENを設定してください</p>
+          </div>
         </div>
       )}
     </div>

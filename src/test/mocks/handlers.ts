@@ -1,6 +1,6 @@
 import { http, HttpResponse } from 'msw'
 
-const SUPABASE_URL = 'https://test.supabase.co'
+const SUPABASE_URL = 'https://fxaricpzadajxcdszonn.supabase.co'
 
 export const handlers = [
   // Supabase RPC: get_nearby_stores

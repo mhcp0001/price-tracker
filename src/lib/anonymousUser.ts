@@ -18,7 +18,7 @@ export class AnonymousUserService {
   }
   
   private static async createAnonymousUser(userId: string) {
-    const { data, error } = await supabase.from('anonymous_users').insert({
+    const { error } = await supabase.from('anonymous_users').insert({
       id: userId,
       display_name: `ユーザー${userId.slice(0, 8)}`,
     }).select()

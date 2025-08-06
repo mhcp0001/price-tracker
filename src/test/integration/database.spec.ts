@@ -1,10 +1,10 @@
 import { describe, it, expect, vi } from 'vitest'
-import { DatabaseService } from './database'
-import { supabase } from './supabase'
-import type { PostgrestSingleResponse, PostgrestResponse } from '@supabase/supabase-js'
+import { DatabaseService } from '../../lib/database'
+import { supabase } from '../../lib/supabase'
+import type { PostgrestSingleResponse } from '@supabase/supabase-js'
 
 // Supabaseクライアントをモック
-vi.mock('./supabase', () => ({
+vi.mock('../../lib/supabase', () => ({
   supabase: {
     rpc: vi.fn(),
     from: vi.fn(),

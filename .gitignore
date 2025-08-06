@@ -77,6 +77,8 @@ pids/
 .cache/
 .parcel-cache/
 .eslintcache
+.vite/
+.vite-inspect/
 
 # Serverless
 .serverless/
@@ -93,6 +95,15 @@ prisma/migrations/
 
 # Testing
 .nyc_output
+playwright-report/
+test-results/
 
 # Local development
 docker-compose.override.yml
+
+# Git worktrees
+/worktrees/
+
+# Windows
+nul
+NUL
